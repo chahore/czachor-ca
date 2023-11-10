@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { usePathname } from 'next/navigation'
-import { Setting } from '@/payload/payload-types'
+import { Setting } from '@/payload-types'
 import { motion } from 'framer-motion'
 
 export default function MainNav({ settings }: { settings: Setting }) {
