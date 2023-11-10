@@ -21,7 +21,7 @@ export default buildConfig({
   }),
   plugins: [
     seo({
-      collections: ['blogs', 'projects'],
+      collections: ['blogs'],
     }),
   ],
 })

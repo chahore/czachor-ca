@@ -13,6 +13,9 @@ const nextConfig = withPayload(
     //     `${process.env.NEXT_PUBLIC_S3_ENDPOINT}`.replace("https://", ""),
     //   ],
     // },
+    experimental: {
+      serverActions: true,
+    },
   },
   {
     configPath: path.resolve(__dirname, './payload/payload.config.ts'),

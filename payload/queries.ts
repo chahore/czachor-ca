@@ -7,3 +7,11 @@ export const getSettings = async () => {
   })
   return settings
 }
+
+export const getProjects = async () => {
+  const payload = await getPayloadClient()
+  const projects = await payload.find({
+    collection: 'projects',
+  })
+  return projects.docs
+}

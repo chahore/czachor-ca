@@ -3,11 +3,11 @@ import { Metadata } from 'next'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'Home',
+    title: 'Projects',
     description: 'David Czachor description',
   }
 }
 
 export default function Page() {
-  return <div>Home</div>
+  return <Projects />
 }

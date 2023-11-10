@@ -15,5 +15,17 @@ export const Projects: CollectionConfig = {
       label: 'Title',
       required: true,
     },
+    {
+      name: 'description',
+      type: 'textarea',
+      label: 'Description',
+      required: true,
+    },
+    {
+      name: 'link',
+      type: 'text',
+      label: 'Link',
+      required: true,
+    },
   ],
 }

@@ -31,6 +31,8 @@ export interface Blog {
 export interface Project {
   id: number;
   title: string;
+  description: string;
+  link: string;
   meta?: {
     title?: string | null;
     description?: string | null;
