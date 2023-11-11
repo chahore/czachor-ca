@@ -8,84 +8,83 @@
 
 export interface Config {
   collections: {
-    projects: Project;
-    blogs: Blog;
-    users: User;
-    'payload-preferences': PayloadPreference;
-    'payload-migrations': PayloadMigration;
-  };
+    projects: Projects
+    blogs: Blogs
+    users: User
+    'payload-preferences': PayloadPreference
+    'payload-migrations': PayloadMigration
+  }
   globals: {
-    settings: Settings;
-  };
+    settings: Settings
+  }
 }
-export interface Project {
-  id: number;
-  title: string;
-  description: string;
-  link: string;
-  updatedAt: string;
-  createdAt: string;
+export interface Projects {
+  id: number
+  title: string
+  description: string
+  link: string
+  updatedAt: string
+  createdAt: string
 }
-export interface Blog {
-  id: number;
-  title: string;
-  updatedAt: string;
-  createdAt: string;
+export interface Blogs {
+  id: number
+  title: string
+  updatedAt: string
+  createdAt: string
 }
 export interface User {
-  id: number;
-  updatedAt: string;
-  createdAt: string;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  password: string | null;
+  id: number
+  updatedAt: string
+  createdAt: string
+  email: string
+  resetPasswordToken?: string | null
+  resetPasswordExpiration?: string | null
+  salt?: string | null
+  hash?: string | null
+  loginAttempts?: number | null
+  lockUntil?: string | null
+  password: string | null
 }
 export interface PayloadPreference {
-  id: number;
+  id: number
   user: {
-    relationTo: 'users';
-    value: number | User;
-  };
-  key?: string | null;
+    relationTo: 'users'
+    value: number | User
+  }
+  key?: string | null
   value?:
     | {
-        [k: string]: unknown;
+        [k: string]: unknown
       }
     | unknown[]
     | string
     | number
     | boolean
-    | null;
-  updatedAt: string;
-  createdAt: string;
+    | null
+  updatedAt: string
+  createdAt: string
 }
 export interface PayloadMigration {
-  id: number;
-  name?: string | null;
-  batch?: number | null;
-  updatedAt: string;
-  createdAt: string;
+  id: number
+  name?: string | null
+  batch?: number | null
+  updatedAt: string
+  createdAt: string
 }
 export interface Settings {
-  id: number;
+  id: number
   navItems?:
     | {
-        label?: string | null;
-        href?: string | null;
-        id?: string | null;
+        label?: string | null
+        href?: string | null
+        id?: string | null
       }[]
-    | null;
-  linkedIn?: string | null;
-  github?: string | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
+    | null
+  linkedIn?: string | null
+  github?: string | null
+  updatedAt?: string | null
+  createdAt?: string | null
 }
-
 
 declare module 'payload' {
   export interface GeneratedTypes extends Config {}

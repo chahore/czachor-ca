@@ -8,6 +8,9 @@ export const Blogs: CollectionConfig = {
   access: {
     read: () => true,
   },
+  typescript: {
+    interface: 'Blogs',
+  },
   fields: [
     {
       name: 'title',

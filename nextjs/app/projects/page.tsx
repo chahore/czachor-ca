@@ -1,4 +1,4 @@
-import Projects from '@/components/home/projects'
+import Projects from '@/components/pages/projects'
 import { Metadata } from 'next'
 
 export async function generateMetadata(): Promise<Metadata> {

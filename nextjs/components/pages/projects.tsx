@@ -1,7 +1,7 @@
-import { getProjects } from '@/payload/queries'
 import Link from 'next/link'
 import { buttonVariants } from '../ui/button'
 import Title from '../global/title'
+import { getProjects } from '../../app/_api/fetchCollections'
 
 export default async function Projects() {
   const projects = await getProjects()
@@ -22,9 +22,7 @@ export default async function Projects() {
               size: 'link',
             })}
           >
-            <h2 className="font-medium underline underline-offset-4">
-              {project.title}
-            </h2>
+            {project.title}
           </Link>
           <p className="text-muted-foreground">{project.description}</p>
         </div>

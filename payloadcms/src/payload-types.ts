@@ -8,8 +8,8 @@
 
 export interface Config {
   collections: {
-    projects: Project;
-    blogs: Blog;
+    projects: Projects;
+    blogs: Blogs;
     users: User;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -18,7 +18,7 @@ export interface Config {
     settings: Settings;
   };
 }
-export interface Project {
+export interface Projects {
   id: number;
   title: string;
   description: string;
@@ -26,7 +26,7 @@ export interface Project {
   updatedAt: string;
   createdAt: string;
 }
-export interface Blog {
+export interface Blogs {
   id: number;
   title: string;
   updatedAt: string;

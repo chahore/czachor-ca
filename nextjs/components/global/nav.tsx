@@ -3,10 +3,10 @@
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { usePathname } from 'next/navigation'
-import { Setting } from '@/payload-types'
+import { Settings } from '@/payload-types'
 import { motion } from 'framer-motion'
 
-export default function MainNav({ settings }: { settings: Setting }) {
+export default function Nav({ settings }: { settings: Settings }) {
   const pathname = usePathname()
   return (
     <>

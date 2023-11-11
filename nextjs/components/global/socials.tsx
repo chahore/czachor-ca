@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { buttonVariants } from '../ui/button'
 import { Icons } from './icons'
-import { getSettings } from '@/payload/queries'
+import { getSettings } from '@/app/_api/fetchGlobals'
 
 export default async function Socials() {
   const settings = await getSettings()
