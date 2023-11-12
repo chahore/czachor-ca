@@ -1,8 +1,8 @@
 import { CollectionConfig } from 'payload/types'
 import { slugField } from '../fields/slug'
 
-export const Blogs: CollectionConfig = {
-  slug: 'blogs',
+export const Pages: CollectionConfig = {
+  slug: 'pages',
   admin: {
     useAsTitle: 'title',
   },

@@ -15,14 +15,9 @@ export const Settings: GlobalConfig = {
       label: 'Nav Items',
       fields: [
         {
-          name: 'label',
-          type: 'text',
-          label: 'Label',
-        },
-        {
-          name: 'href',
-          type: 'text',
-          label: 'Href',
+          name: 'page',
+          type: 'relationship',
+          relationTo: 'pages',
         },
       ],
     },

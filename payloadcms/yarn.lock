@@ -985,6 +985,11 @@
     prompts "2.4.2"
     to-snake-case "1.0.0"
 
+"@payloadcms/plugin-seo@^1.0.15":
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/@payloadcms/plugin-seo/-/plugin-seo-1.0.15.tgz#ca794897d1e8c3291a8dd74339b7f28f10bba815"
+  integrity sha512-7nU0DD3UZOOHsV2UIkOWL2JNCX+u1WNbEvZOiGpO6lB6YekuVIMqxHKbTdVR73UeW44lApvS9LTgif3XLQ5HDA==
+
 "@payloadcms/richtext-lexical@^0.1.17":
   version "0.1.17"
   resolved "https://registry.yarnpkg.com/@payloadcms/richtext-lexical/-/richtext-lexical-0.1.17.tgz#e85e320ca8427787e6318c1e76ae2d71484225f7"

@@ -8,9 +8,6 @@ export const Projects: CollectionConfig = {
   access: {
     read: () => true,
   },
-  typescript: {
-    interface: 'Projects',
-  },
   fields: [
     {
       name: 'title',

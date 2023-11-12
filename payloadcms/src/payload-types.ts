@@ -8,8 +8,9 @@
 
 export interface Config {
   collections: {
-    projects: Projects;
-    blogs: Blogs;
+    pages: Page;
+    projects: Project;
+    blogs: Blog;
     users: User;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -18,7 +19,18 @@ export interface Config {
     settings: Settings;
   };
 }
-export interface Projects {
+export interface Page {
+  id: number;
+  title: string;
+  slug?: string | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+export interface Project {
   id: number;
   title: string;
   description: string;
@@ -26,9 +38,14 @@ export interface Projects {
   updatedAt: string;
   createdAt: string;
 }
-export interface Blogs {
+export interface Blog {
   id: number;
   title: string;
+  slug?: string | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -75,8 +92,7 @@ export interface Settings {
   id: number;
   navItems?:
     | {
-        label?: string | null;
-        href?: string | null;
+        page?: (number | null) | Page;
         id?: string | null;
       }[]
     | null;

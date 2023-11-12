@@ -12,22 +12,23 @@ export default function Nav({ settings }: { settings: Settings }) {
     <>
       {settings.navItems?.length ? (
         <nav className="space-x-4">
-          {settings.navItems?.map(
-            (item, index) =>
-              item.href && (
+          {settings.navItems?.map((item, index) => {
+            const slug =
+              item.page?.slug === 'home' ? '/' : `/${item.page?.slug}`
+
+            return (
+              slug && (
                 <Link
                   key={index}
-                  href={item.href}
+                  href={slug}
                   className={cn(
                     'transition-colors hover:text-foreground/80',
-                    pathname === item.href
-                      ? 'text-foreground'
-                      : 'text-foreground/60'
+                    pathname === slug ? 'text-foreground' : 'text-foreground/60'
                   )}
                 >
                   <span className="relative py-1.5">
-                    {item.label}
-                    {item.href === pathname ? (
+                    {item.page?.title}
+                    {pathname === slug ? (
                       <motion.div
                         className="absolute inset-0 top-7 z-[-1] h-[1px] w-full bg-neutral-800 bg-gradient-to-r from-transparent to-neutral-900"
                         layoutId="sidebar"
@@ -41,7 +42,8 @@ export default function Nav({ settings }: { settings: Settings }) {
                   </span>
                 </Link>
               )
-          )}
+            )
+          })}
         </nav>
       ) : null}
     </>
