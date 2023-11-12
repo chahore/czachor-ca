@@ -7,7 +7,7 @@ export default async function SiteHeader() {
   return (
     <header className="flex h-28 items-center bg-transparent pt-6">
       <Nav settings={settings} />
-      <div className="flex flex-1 justify-end space-x-1 pb-0.5">
+      <div className="flex flex-1 justify-end space-x-1 pb-1">
         <Socials />
       </div>
     </header>
