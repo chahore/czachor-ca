@@ -1,9 +1,17 @@
-import { LucideProps, Linkedin, type LucideIcon } from 'lucide-react'
+import {
+  MoveUpRight,
+  Mail,
+  LucideProps,
+  Linkedin,
+  type LucideIcon,
+} from 'lucide-react'
 
 export type Icon = LucideIcon
 
 export const Icons = {
   linkedIn: Linkedin,
+  email: Mail,
+  arrow: MoveUpRight,
   gitHub: (props: LucideProps) => (
     <svg
       viewBox="0 0 438.549 438.549"
