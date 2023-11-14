@@ -45,3 +45,18 @@ export const projects = [
     href: 'https://pokedex.czachor.dev',
   },
 ]
+
+export const projectPageConfig = {
+  title: 'Projects',
+  description: 'A list of projects by David Czachor',
+}
+
+export const blogPageConfig = {
+  title: 'Blog',
+  description: 'A list of blog posts by David Czachor',
+}
+
+export const guestbookPageConfig = {
+  title: 'Guestbook',
+  description: 'A list of guestbook posts by David Czachor',
+}
