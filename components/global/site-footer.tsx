@@ -4,8 +4,8 @@ import Socials from './socials'
 export default function SiteFooter() {
   const year = new Date().getFullYear()
   return (
-    <footer className="flex items-center justify-between py-5">
-      <text className="text-sm text-foreground/50">
+    <footer className="mt-8 flex items-center justify-between">
+      <text className="text-sm text-muted-foreground/75">
         {year} © {siteConfig.title}
       </text>
       <Socials />

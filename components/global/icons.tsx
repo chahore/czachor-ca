@@ -9,10 +9,10 @@ import {
 export type Icon = LucideIcon
 
 export const Icons = {
-  linkedIn: Linkedin,
+  linkedin: Linkedin,
   email: Mail,
   arrow: ArrowUpRight,
-  gitHub: (props: LucideProps) => (
+  github: (props: LucideProps) => (
     <svg
       viewBox="0 0 438.549 438.549"
       {...props}

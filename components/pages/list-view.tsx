@@ -30,7 +30,7 @@ export default async function ListView({
               size: 'link',
             })}
           >
-            <h2 className="underline decoration-muted-foreground underline-offset-4 transition-colors hover:decoration-foreground">
+            <h2 className="text-foreground underline decoration-muted-foreground underline-offset-4 transition-colors hover:decoration-foreground">
               {title}
             </h2>
           </Link>

@@ -11,8 +11,7 @@ export default function Page() {
   return (
     <main>
       <h1 className="mb-4">
-        Building projects{' '}
-        <em className="font-serif text-lg italic">with a passion.</em>
+        Building projects <em>with a passion.</em>
       </h1>
 
       <ListView listItems={projects} />

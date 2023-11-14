@@ -20,7 +20,7 @@
     --secondary-foreground: 0 0% 98%;
 
     --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted-foreground: 0 0% 63%;
 
     --accent: 240 3.7% 15.9%;
     --accent-foreground: 0 0% 98%;
@@ -42,5 +42,9 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  em {
+    @apply font-serif text-[17px] italic;
   }
 }

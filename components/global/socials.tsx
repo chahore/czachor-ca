@@ -7,8 +7,8 @@ export default async function Socials() {
   const iconClassName = 'h-4 w-4'
 
   const getSocialIcon = {
-    linkedin: <Icons.linkedIn className={iconClassName} />,
-    github: <Icons.gitHub className={iconClassName} />,
+    linkedin: <Icons.linkedin className={iconClassName} />,
+    github: <Icons.github className={iconClassName} />,
     email: <Icons.email className={iconClassName} />,
   }
   return (
