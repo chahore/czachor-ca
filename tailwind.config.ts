@@ -16,6 +16,12 @@ module.exports = {
       },
     },
     extend: {
+      minHeight: {
+        screen: '100svh',
+      },
+      height: {
+        screen: '100svh',
+      },
       fontFamily: {
         sans: ['var(--font-geist-sans)'],
         mono: ['var(--font-geist-mono)'],
