@@ -7,7 +7,10 @@ import { motion } from 'framer-motion'
 import { siteConfig } from '@/site.config'
 
 export default function Nav() {
-  const pathname = usePathname()
+  let pathname = usePathname()
+  if (pathname.includes('/blog/')) {
+    pathname = '/blog'
+  }
   return (
     <>
       {siteConfig.mainNav?.length ? (
