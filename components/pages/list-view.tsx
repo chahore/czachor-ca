@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { buttonVariants } from '../ui/button'
 import { Icons } from '../global/icons'
 
-type ListViewProps = {
+export type ListViewProps = {
   title: string
   description: string
   href: string

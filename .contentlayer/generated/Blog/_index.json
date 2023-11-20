@@ -6,15 +6,15 @@
       "raw": "\nUllamco et nostrud magna commodo nostrud ...\n",
       "html": "<p>Ullamco et nostrud magna commodo nostrud ...</p>"
     },
-    "_id": "test.md",
+    "_id": "test.mdx",
     "_raw": {
-      "sourceFilePath": "test.md",
-      "sourceFileName": "test.md",
+      "sourceFilePath": "test.mdx",
+      "sourceFileName": "test.mdx",
       "sourceFileDir": ".",
-      "contentType": "markdown",
+      "contentType": "mdx",
       "flattenedPath": "test"
     },
     "type": "Blog",
-    "url": "/blog/test"
+    "url": "/blogs/test"
   }
 ]
