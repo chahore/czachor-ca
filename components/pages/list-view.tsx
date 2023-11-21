@@ -10,8 +10,10 @@ export type ListViewProps = {
 
 export default async function ListView({
   listItems,
+  external = false,
 }: {
   listItems: ListViewProps
+  external?: boolean
 }) {
   return (
     <>
@@ -22,7 +24,7 @@ export default async function ListView({
         >
           <Link
             href={href}
-            target="_blank"
+            target={external ? '_blank' : '_self'}
             rel="noreferrer"
             aria-label={`Open ${title}`}
             className={buttonVariants({

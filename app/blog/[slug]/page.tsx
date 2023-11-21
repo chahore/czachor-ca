@@ -19,23 +19,12 @@ export default function Blog({ params }: { params: { slug: string } }) {
 
   const MDXContent = useMDXComponent(blog.body.code)
   return (
-    <article className="mx-auto max-w-xl py-8">
-      <div className="mb-8 text-center">
-        <time
-          dateTime={blog.date}
-          className="mb-1 text-xs text-gray-600"
-        >
-          {new Date(blog.date).toLocaleDateString('en-US', {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric',
-          })}
-        </time>
-        <h1 className="text-3xl font-bold">{blog.title}</h1>
-      </div>
-      <div className="prose dark:prose-invert prose-headings:font-display prose-a:text-cyan-500 prose-img:rounded-2xl mt-8">
-        <MDXContent components={{ Image }} />
-      </div>
+    <article>
+      <h1 className="">{blog.title}</h1>
+      <h2 className="mb-4 text-sm text-muted-foreground">
+        {blog.date.split('T')[0]}
+      </h2>
+      <MDXContent components={{ Image }} />
     </article>
   )
 }

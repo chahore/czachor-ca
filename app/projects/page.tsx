@@ -14,7 +14,10 @@ export default function Page() {
         Building projects <em>with a passion.</em>
       </h1>
 
-      <ListView listItems={projects} />
+      <ListView
+        listItems={projects}
+        external={true}
+      />
     </main>
   )
 }

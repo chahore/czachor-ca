@@ -40,7 +40,7 @@ export const siteConfig = {
 
 export const projects = [
   {
-    title: 'simple react pokedex',
+    title: 'Simple React Pokedex',
     description: 'A simple pokedex built with React',
     href: 'https://pokedex.czachor.dev',
   },
