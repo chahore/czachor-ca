@@ -36,10 +36,12 @@ export default async function ListView({
               {title}
             </h2>
           </Link>
-          <Icons.arrow
-            className="ml-1 inline h-5 w-5 text-muted-foreground"
-            aria-hidden={true}
-          />
+          {external && (
+            <Icons.arrow
+              className="ml-1 inline h-5 w-5 text-muted-foreground"
+              aria-hidden={true}
+            />
+          )}
           <p className="block text-muted-foreground">{description}</p>
         </article>
       ))}
