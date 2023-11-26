@@ -4,6 +4,9 @@ const nextConfig = {
   experimental: {
     ppr: true,
   },
+  images: {
+    remotePatterns: ['avatars.githubusercontent.com'],
+  },
   headers() {
     return [
       {
