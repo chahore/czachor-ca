@@ -25,6 +25,7 @@ export default async function ListView({
           <Link
             href={href}
             target={external ? '_blank' : '_self'}
+            prefetch={external ? false : true}
             rel="noreferrer"
             aria-label={`Open ${title}`}
             className={buttonVariants({

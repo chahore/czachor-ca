@@ -3,6 +3,7 @@
 import { deleteGuestbookEntry, saveGuestbookEntry } from '@/lib/actions'
 import { useRef } from 'react'
 import { useFormStatus } from 'react-dom'
+import { buttonVariants } from '../ui/button'
 
 export default function Form() {
   const formRef = useRef<HTMLFormElement>(null)
@@ -44,5 +45,15 @@ function SubmitButton() {
 }
 
 export function DeleteEntry({ id }: { id: number }) {
-  return <button onClick={() => deleteGuestbookEntry(id)}>Delete</button>
+  return (
+    <button
+      className={buttonVariants({
+        variant: 'destructive',
+        size: 'sm',
+      })}
+      onClick={() => deleteGuestbookEntry(id)}
+    >
+      Delete
+    </button>
+  )
 }

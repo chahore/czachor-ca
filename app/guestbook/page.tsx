@@ -47,15 +47,16 @@ async function GuestbookEntries() {
   }
 
   const isUserAuthorizedToDelete = (entry) => {
-    console.log(session?.user?.email)
-    console.log(entry.user_email)
-    return session?.user?.email === 'david@czachor.dev'
+    return (
+      session?.user?.email === entry.user_email ||
+      session?.user?.email === 'david@czachor.dev'
+    )
   }
 
   return entries.map((entry) => (
     <article
       key={entry.id}
-      className="mb-2 flex items-center break-words text-sm"
+      className="mb-2 flex items-center space-x-2 break-words text-sm"
     >
       {isUserAuthorizedToDelete(entry) && <DeleteEntry id={entry.id} />}
       <Image
@@ -65,9 +66,7 @@ async function GuestbookEntries() {
         height={10}
         className="h-5 w-5 rounded-full"
       />
-      <h2 className="mx-2 min-w-fit text-muted-foreground">
-        {entry.user_name}:
-      </h2>
+      <h2 className="min-w-fit text-muted-foreground">{entry.user_name}:</h2>
       <p>{entry.body}</p>
     </article>
   ))

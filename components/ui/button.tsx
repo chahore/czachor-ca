@@ -17,10 +17,12 @@ const buttonVariants = cva(
           'bg-secondary text-secondary-foreground hover:bg-secondary/80',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary',
+        badge:
+          'border border-muted-foreground/20 bg-secondary rounded p-1 text-sm inline-flex items-center leading-4 text-foreground no-underline',
       },
       size: {
         default: 'h-10 px-4 py-2',
-        sm: 'h-9 rounded-md px-3',
+        sm: 'h-5 rounded-md px-1.5 text-xs',
         lg: 'h-11 rounded-md px-8',
         icon: 'h-8 w-8',
         link: 'h-auto',
