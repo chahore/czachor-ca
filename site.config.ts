@@ -13,10 +13,10 @@ export const siteConfig = {
       title: 'projects',
       href: '/projects',
     },
-    {
-      title: 'blog',
-      href: '/blog',
-    },
+    // {
+    //   title: 'blog',
+    //   href: '/blog',
+    // },
     {
       title: 'guestbook',
       href: '/guestbook',

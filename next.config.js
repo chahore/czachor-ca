@@ -5,7 +5,12 @@ const nextConfig = {
     ppr: true,
   },
   images: {
-    remotePatterns: ['avatars.githubusercontent.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+      },
+    ],
   },
   headers() {
     return [

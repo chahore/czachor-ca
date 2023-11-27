@@ -4,6 +4,8 @@ import { Suspense } from 'react'
 import { auth } from 'app/auth'
 import { SignIn, SignOut } from '@/components/auth/buttons'
 import Image from 'next/image'
+import { getGuestbookEntries } from '@/lib/queries'
+import Form from '@/components/pages/guestbook-form'
 
 export const metadata: Metadata = {
   title: guestbookPageConfig.title,
@@ -13,11 +15,10 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <section>
-      <h1 className="mb-8 text-2xl font-medium tracking-tighter">
-        sign my guestbook
-      </h1>
+      <h1 className="mb-4">Guestbook.</h1>
       <Suspense>
         <GuestbookForm />
+        <GuestbookEntries />
       </Suspense>
     </section>
   )
@@ -28,15 +29,37 @@ async function GuestbookForm() {
 
   return session?.user ? (
     <>
+      <Form />
       <SignOut />
-      <Image
-        src={session.user.image!}
-        alt="test"
-        width={100}
-        height={100}
-      />
     </>
   ) : (
     <SignIn />
   )
+}
+
+async function GuestbookEntries() {
+  let entries = await getGuestbookEntries()
+
+  if (entries.length === 0) {
+    return null
+  }
+
+  return entries.map((entry) => (
+    <article
+      key={entry.id}
+      className="mb-2 flex items-center break-words text-sm"
+    >
+      <Image
+        src={entry.user_profile}
+        alt={`Profile picture of ${entry.user_name}`}
+        width={10}
+        height={10}
+        className="h-5 w-5 rounded-full"
+      />
+      <h2 className="mx-2 text-muted-foreground dark:text-neutral-400">
+        {entry.user_name}:
+      </h2>
+      <p>{entry.body}</p>
+    </article>
+  ))
 }
