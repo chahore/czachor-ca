@@ -5,7 +5,8 @@ import { auth } from 'app/auth'
 import { SignIn, SignOut } from '@/components/auth/buttons'
 import Image from 'next/image'
 import { getGuestbookEntries } from '@/lib/queries'
-import Form from '@/components/pages/guestbook-form'
+import Form, { DeleteEntry } from '@/components/pages/guestbook-form'
+import { deleteGuestbookEntry } from '@/lib/actions'
 
 export const metadata: Metadata = {
   title: guestbookPageConfig.title,
@@ -39,9 +40,16 @@ async function GuestbookForm() {
 
 async function GuestbookEntries() {
   let entries = await getGuestbookEntries()
+  let session = await auth()
 
   if (entries.length === 0) {
     return null
+  }
+
+  const isUserAuthorizedToDelete = (entry) => {
+    console.log(session?.user?.email)
+    console.log(entry.user_email)
+    return session?.user?.email === 'david@czachor.dev'
   }
 
   return entries.map((entry) => (
@@ -49,6 +57,7 @@ async function GuestbookEntries() {
       key={entry.id}
       className="mb-2 flex items-center break-words text-sm"
     >
+      {isUserAuthorizedToDelete(entry) && <DeleteEntry id={entry.id} />}
       <Image
         src={entry.user_profile}
         alt={`Profile picture of ${entry.user_name}`}
@@ -56,7 +65,7 @@ async function GuestbookEntries() {
         height={10}
         className="h-5 w-5 rounded-full"
       />
-      <h2 className="mx-2 text-muted-foreground dark:text-neutral-400">
+      <h2 className="mx-2 min-w-fit text-muted-foreground">
         {entry.user_name}:
       </h2>
       <p>{entry.body}</p>

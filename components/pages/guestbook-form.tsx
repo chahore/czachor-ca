@@ -1,6 +1,6 @@
 'use client'
 
-import { saveGuestbookEntry } from '@/lib/actions'
+import { deleteGuestbookEntry, saveGuestbookEntry } from '@/lib/actions'
 import { useRef } from 'react'
 import { useFormStatus } from 'react-dom'
 
@@ -41,4 +41,8 @@ function SubmitButton() {
       Sign
     </button>
   )
+}
+
+export function DeleteEntry({ id }: { id: number }) {
+  return <button onClick={() => deleteGuestbookEntry(id)}>Delete</button>
 }

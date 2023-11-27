@@ -34,3 +34,29 @@ export async function saveGuestbookEntry(formData: FormData) {
 
   revalidatePath('/guestbook')
 }
+
+export async function deleteGuestbookEntry(id: number) {
+  let session = await getSession()
+  let user_email = session.user?.email as string
+
+  if (!session.user) {
+    throw new Error('Unauthorized')
+  }
+
+  const isAdmin = user_email === 'david@czachor.dev'
+
+  if (isAdmin) {
+    await sql`
+      DELETE FROM guestbook
+      WHERE id = ${id}
+    `
+  } else {
+    await sql`
+      DELETE FROM guestbook
+      WHERE id = ${id}
+      AND user_email = ${user_email}
+    `
+  }
+
+  revalidatePath('/guestbook')
+}

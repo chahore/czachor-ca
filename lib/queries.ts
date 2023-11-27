@@ -6,7 +6,7 @@ import { sql } from '@vercel/postgres'
 export async function getGuestbookEntries() {
   noStore()
   let entries = await sql`
-    SELECT body, user_name, user_profile
+    SELECT body, user_name, user_profile, id, user_email
     FROM guestbook
     ORDER BY created_at DESC
     LIMIT 100
