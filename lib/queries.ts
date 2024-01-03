@@ -1,7 +1,6 @@
 'use server'
 
 import { unstable_noStore as noStore } from 'next/cache'
-import { sql } from '@vercel/postgres'
 
 export async function getGuestbookEntries() {
   noStore()
