@@ -6,7 +6,7 @@ import { siteConfig } from '@/site.config'
 export default async function Socials() {
   const iconClassName = 'h-4 w-4'
 
-  const getSocialIcon = {
+  const getSocialIcon: { [key: string]: JSX.Element } = {
     linkedin: <Icons.linkedin className={iconClassName} />,
     github: <Icons.github className={iconClassName} />,
     email: <Icons.email className={iconClassName} />,
