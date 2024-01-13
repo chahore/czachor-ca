@@ -13,10 +13,6 @@ export const siteConfig = {
       title: 'projects',
       href: '/projects',
     },
-    // {
-    //   title: 'blog',
-    //   href: '/blog',
-    // },
     {
       title: 'guestbook',
       href: '/guestbook',
@@ -49,11 +45,6 @@ export const projects = [
 export const projectPageConfig = {
   title: 'Projects',
   description: 'A list of projects by David Czachor',
-}
-
-export const blogPageConfig = {
-  title: 'Blog',
-  description: 'A list of blog posts by David Czachor',
 }
 
 export const guestbookPageConfig = {
