@@ -14,7 +14,7 @@ async function getSession(): Promise<Session> {
   return session
 }
 
-export async function saveGuestbookEntry(formData: FormData) {
+export async function saveGuestbookEntry(formData: string) {
   let session = await getSession()
   let user_name = session.user?.name as string
   let user_email = session.user?.email as string
@@ -24,8 +24,8 @@ export async function saveGuestbookEntry(formData: FormData) {
     throw new Error('Unauthorized')
   }
 
-  let entry = formData.get('entry')?.toString() || ''
-  let user_message = entry.slice(0, 500)
+  let entry = formData
+  let user_message = entry.slice(0, 80)
 
   const query = `
   INSERT INTO guestbook (user_name, user_email, user_pic, user_message, created_at)

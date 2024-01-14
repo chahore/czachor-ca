@@ -4,8 +4,8 @@ import { Suspense } from 'react'
 import { auth } from 'app/auth'
 import { SignIn, SignOut } from '@/components/auth/buttons'
 import Image from 'next/image'
-import { getGuestbookEntries } from '@/lib/queries'
-import Form, { DeleteEntry } from '@/components/pages/guestbook-form'
+import { getGuestbookEntries } from '@/db/queries'
+import MessageForm, { DeleteEntry } from '@/components/pages/guestbook-form'
 import { deleteGuestbookEntry } from '@/lib/actions'
 
 export const metadata: Metadata = {
@@ -30,7 +30,7 @@ async function GuestbookForm() {
 
   return session?.user ? (
     <>
-      <Form />
+      <MessageForm />
       <SignOut />
     </>
   ) : (
@@ -53,21 +53,28 @@ async function GuestbookEntries() {
     )
   }
 
-  return entries.map((entry) => (
-    <article
-      key={entry.id}
-      className="mb-2 flex items-center space-x-1.5 break-words text-sm"
-    >
-      {isUserAuthorizedToDelete(entry) && <DeleteEntry id={entry.id} />}
-      <Image
-        src={entry.user_pic}
-        alt={`Profile picture of ${entry.user_name}`}
-        width={10}
-        height={10}
-        className="h-4 w-4 rounded-full"
-      />
-      <h2 className="min-w-fit text-muted-foreground">{entry.user_name}:</h2>
-      <p>{entry.user_message}</p>
-    </article>
-  ))
+  return (
+    <div className="pt-2">
+      {entries.map((entry) => (
+        <article
+          key={entry.id}
+          className="mb-2 space-x-1.5 text-sm "
+        >
+          {isUserAuthorizedToDelete(entry) && <DeleteEntry id={entry.id} />}
+
+          <span className="min-w-fit pr-1.5 text-muted-foreground">
+            <Image
+              src={entry.user_pic}
+              alt={`Profile picture of ${entry.user_name}`}
+              width={50}
+              height={50}
+              className="-mt-0.5 mr-1.5 inline h-4 w-4 rounded-full"
+            />
+            {entry.user_name}:
+          </span>
+          {entry.user_message}
+        </article>
+      ))}
+    </div>
+  )
 }

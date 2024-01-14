@@ -15,13 +15,14 @@ const buttonVariants = cva(
           'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
         secondary:
           'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-        ghost: 'hover:bg-accent hover:text-accent-foreground',
+        ghost:
+          'bg-transparent hover:bg-transparent text-foreground/75 hover:text-foreground',
         link: 'text-primary',
         badge:
           'border border-muted-foreground/20 bg-secondary rounded p-1 text-sm inline-flex items-center leading-4 text-foreground no-underline',
       },
       size: {
-        default: 'h-10 px-4 py-2',
+        default: 'h-8 rounded-md px-2 text-sm',
         sm: 'h-5 rounded-md px-1.5 text-xs',
         lg: 'h-11 rounded-md px-8',
         icon: 'h-8 w-8',
