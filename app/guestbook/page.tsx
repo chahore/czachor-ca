@@ -56,18 +56,18 @@ async function GuestbookEntries() {
   return entries.map((entry) => (
     <article
       key={entry.id}
-      className="mb-2 flex items-center space-x-2 break-words text-sm"
+      className="mb-2 flex items-center space-x-1.5 break-words text-sm"
     >
       {isUserAuthorizedToDelete(entry) && <DeleteEntry id={entry.id} />}
       <Image
-        src={entry.user_profile}
+        src={entry.user_pic}
         alt={`Profile picture of ${entry.user_name}`}
         width={10}
         height={10}
-        className="h-5 w-5 rounded-full"
+        className="h-4 w-4 rounded-full"
       />
       <h2 className="min-w-fit text-muted-foreground">{entry.user_name}:</h2>
-      <p>{entry.body}</p>
+      <p>{entry.user_message}</p>
     </article>
   ))
 }

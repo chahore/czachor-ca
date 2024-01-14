@@ -1,5 +1,6 @@
 'use server'
 
+import { db } from '@/db'
 import { auth } from 'app/auth'
 import { type Session } from 'next-auth'
 import { revalidatePath, unstable_noStore as noStore } from 'next/cache'
@@ -15,21 +16,23 @@ async function getSession(): Promise<Session> {
 
 export async function saveGuestbookEntry(formData: FormData) {
   let session = await getSession()
-  let user_email = session.user?.email as string
   let user_name = session.user?.name as string
-  let user_profile = session.user?.image as string
+  let user_email = session.user?.email as string
+  let user_pic = session.user?.image as string
 
   if (!session.user) {
     throw new Error('Unauthorized')
   }
 
   let entry = formData.get('entry')?.toString() || ''
-  let body = entry.slice(0, 500)
+  let user_message = entry.slice(0, 500)
 
-  await sql`
-    INSERT INTO guestbook (user_email, body, user_name, user_profile, created_at)
-    VALUES (${user_email}, ${body}, ${user_name}, ${user_profile}, NOW())
-  `
+  const query = `
+  INSERT INTO guestbook (user_name, user_email, user_pic, user_message, created_at)
+  VALUES ('${user_name}', '${user_email}', '${user_pic}', '${user_message}', datetime('now'))
+`
+
+  await db.execute(query)
 
   revalidatePath('/guestbook')
 }
@@ -45,16 +48,18 @@ export async function deleteGuestbookEntry(id: number) {
   const isAdmin = user_email === 'david@czachor.dev'
 
   if (isAdmin) {
-    await sql`
-      DELETE FROM guestbook
-      WHERE id = ${id}
-    `
+    const entry = `
+    DELETE FROM guestbook
+    WHERE id = ${id}
+  `
+    await db.execute(entry)
   } else {
-    await sql`
-      DELETE FROM guestbook
-      WHERE id = ${id}
-      AND user_email = ${user_email}
-    `
+    const entry = `
+    DELETE FROM guestbook
+    WHERE id = ${id}
+    AND user_email = ${user_email}
+  `
+    await db.execute(entry)
   }
 
   revalidatePath('/guestbook')
