@@ -3,7 +3,6 @@ import ListView from '@/components/pages/list-view'
 import Badge from '@/components/ui/badge'
 import { projectPageConfig, projects } from '@/site.config'
 import { Metadata } from 'next'
-import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: projectPageConfig.title,
