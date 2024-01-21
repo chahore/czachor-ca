@@ -1,6 +1,6 @@
 'use client'
 
-import { deleteGuestbookEntry, saveGuestbookEntry } from '@/lib/actions'
+import { deleteWallEntry, saveWallEntry } from '@/lib/actions'
 import { useRef } from 'react'
 import { useFormStatus } from 'react-dom'
 import { buttonVariants } from '../ui/button'
@@ -14,7 +14,7 @@ export default function Form() {
       className="relative max-w-[500px]"
       ref={formRef}
       action={async (formData) => {
-        await saveGuestbookEntry(formData)
+        await saveWallEntry(formData)
         formRef.current?.reset()
       }}
     >
@@ -55,7 +55,7 @@ export function DeleteEntry({ id }: { id: number }) {
         variant: 'destructive',
         size: 'sm',
       })}
-      onClick={() => deleteGuestbookEntry(id)}
+      onClick={() => deleteWallEntry(id)}
     >
       Delete
     </button>

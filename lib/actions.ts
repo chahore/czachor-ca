@@ -14,7 +14,7 @@ async function getSession(): Promise<Session> {
   return session
 }
 
-export async function saveGuestbookEntry(formData: FormData) {
+export async function saveWallEntry(formData: FormData) {
   let session = await getSession()
   let user_name = session.user?.name as string
   let user_email = session.user?.email as string
@@ -28,16 +28,16 @@ export async function saveGuestbookEntry(formData: FormData) {
   let user_message = entry.slice(0, 80)
 
   const query = `
-  INSERT INTO guestbook (user_name, user_email, user_pic, user_message, created_at)
+  INSERT INTO wall (user_name, user_email, user_pic, user_message, created_at)
   VALUES ('${user_name}', '${user_email}', '${user_pic}', '${user_message}', datetime('now'))
 `
 
   await db.execute(query)
 
-  revalidatePath('/guestbook')
+  revalidatePath('/wall')
 }
 
-export async function deleteGuestbookEntry(id: number) {
+export async function deleteWallEntry(id: number) {
   let session = await getSession()
   let user_email = session.user?.email as string
 
@@ -49,18 +49,18 @@ export async function deleteGuestbookEntry(id: number) {
 
   if (isAdmin) {
     const entry = `
-    DELETE FROM guestbook
+    DELETE FROM wall
     WHERE id = ${id}
   `
     await db.execute(entry)
   } else {
     const entry = `
-    DELETE FROM guestbook
+    DELETE FROM wall
     WHERE id = ${id}
     AND user_email = ${user_email}
   `
     await db.execute(entry)
   }
 
-  revalidatePath('/guestbook')
+  revalidatePath('/wall')
 }

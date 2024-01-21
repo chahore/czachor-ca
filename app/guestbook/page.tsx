@@ -4,7 +4,7 @@ import { Suspense } from 'react'
 import { auth } from 'app/auth'
 import { SignIn, SignOut } from '@/components/auth/buttons'
 import { getGuestbookEntries } from '@/db/queries'
-import MessageForm, { DeleteEntry } from '@/components/pages/guestbook-form'
+import MessageForm, { DeleteEntry } from '@/components/pages/wall-form'
 
 export const metadata: Metadata = {
   title: guestbookPageConfig.title,
@@ -14,16 +14,16 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <section>
-      <h1 className="mb-4">Guestbook.</h1>
+      <h1 className="mb-4">Write on the wall.</h1>
       <Suspense>
-        <GuestbookForm />
-        <GuestbookEntries />
+        <WallForm />
+        <WallEntries />
       </Suspense>
     </section>
   )
 }
 
-async function GuestbookForm() {
+async function WallForm() {
   let session = await auth()
 
   return session?.user ? (
@@ -36,7 +36,7 @@ async function GuestbookForm() {
   )
 }
 
-async function GuestbookEntries() {
+async function WallEntries() {
   let entries = await getGuestbookEntries()
   let session = await auth()
 

@@ -10,12 +10,12 @@ export const siteConfig = {
       href: '/',
     },
     {
-      title: 'projects',
-      href: '/projects',
+      title: 'work',
+      href: '/work',
     },
     {
-      title: 'guestbook',
-      href: '/guestbook',
+      title: 'wall',
+      href: '/wall',
     },
   ],
   socials: [
@@ -43,11 +43,11 @@ export const projects = [
 ]
 
 export const projectPageConfig = {
-  title: 'Projects',
-  description: 'A list of projects by David Czachor',
+  title: 'Work',
+  description: 'A showcase of work done by David Czachor',
 }
 
 export const guestbookPageConfig = {
-  title: 'Guestbook',
-  description: 'A list of guestbook posts by David Czachor',
+  title: 'Wall',
+  description: 'Write on the wall.',
 }

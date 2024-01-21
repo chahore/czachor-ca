@@ -8,6 +8,7 @@ import { TailwindIndicator } from '@/components/global/tailwind-indicator'
 import { Analytics } from '@vercel/analytics/react'
 import { siteConfig } from '@/site.config'
 import { fontSerif } from '@/lib/fonts'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export const metadata: Metadata = {
   title: {
@@ -29,10 +30,10 @@ export default function RootLayout({
     >
       <body className="container mx-auto min-h-screen bg-background antialiased sm:max-w-3xl">
         <Analytics />
+        <SpeedInsights />
         <SiteHeader />
         {children}
         <SiteFooter />
-        <TailwindIndicator />
       </body>
     </html>
   )
