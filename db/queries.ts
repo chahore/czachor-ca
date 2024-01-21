@@ -13,7 +13,7 @@ interface WallEntry extends Row {
   created_at: string
 }
 
-export async function getWallEntry() {
+export async function getWallEntries() {
   noStore()
   let entries = await db.execute(
     'SELECT id, user_name, user_email, user_pic, user_message, created_at FROM wall ORDER BY created_at DESC LIMIT 100'
