@@ -47,7 +47,7 @@ export const projectPageConfig = {
   description: 'A showcase of work done by David Czachor',
 }
 
-export const guestbookPageConfig = {
+export const wallPageConfig = {
   title: 'Wall',
   description: 'Write on the wall.',
 }

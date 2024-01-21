@@ -1,14 +1,14 @@
-import { guestbookPageConfig } from '@/site.config'
+import { wallPageConfig } from '@/site.config'
 import { Metadata } from 'next'
 import { Suspense } from 'react'
 import { auth } from 'app/auth'
 import { SignIn, SignOut } from '@/components/auth/buttons'
-import { getGuestbookEntries } from '@/db/queries'
+import { getWallEntries } from '@/db/queries'
 import MessageForm, { DeleteEntry } from '@/components/pages/wall-form'
 
 export const metadata: Metadata = {
-  title: guestbookPageConfig.title,
-  description: guestbookPageConfig.description,
+  title: wallPageConfig.title,
+  description: wallPageConfig.description,
 }
 
 export default function Page() {
@@ -37,7 +37,7 @@ async function WallForm() {
 }
 
 async function WallEntries() {
-  let entries = await getGuestbookEntries()
+  let entries = await getWallEntries()
   let session = await auth()
 
   if (entries.length === 0) {

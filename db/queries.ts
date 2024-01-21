@@ -4,7 +4,7 @@ import { db } from '@/db'
 import { Row } from '@libsql/client'
 import { unstable_noStore as noStore } from 'next/cache'
 
-interface GuestbookEntry extends Row {
+interface WallEntry extends Row {
   id: number
   user_name: string
   user_email: string
@@ -13,10 +13,10 @@ interface GuestbookEntry extends Row {
   created_at: string
 }
 
-export async function getGuestbookEntries() {
+export async function getWallEntry() {
   noStore()
   let entries = await db.execute(
-    'SELECT id, user_name, user_email, user_pic, user_message, created_at FROM guestbook ORDER BY created_at DESC LIMIT 100'
+    'SELECT id, user_name, user_email, user_pic, user_message, created_at FROM wall ORDER BY created_at DESC LIMIT 100'
   )
-  return entries.rows as GuestbookEntry[]
+  return entries.rows as WallEntry[]
 }
