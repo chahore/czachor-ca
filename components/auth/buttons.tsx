@@ -2,6 +2,7 @@
 
 import { signIn, signOut } from 'next-auth/react'
 import { Button, buttonVariants } from '../ui/button'
+import { Icons } from '../global/icons'
 
 export function SignOut() {
   return (
@@ -18,5 +19,13 @@ export function SignOut() {
 }
 
 export function SignIn() {
-  return <Button onClick={() => signIn('github')}>Sign In</Button>
+  return (
+    <button
+      className={buttonVariants({ variant: 'outline' })}
+      onClick={() => signIn('github')}
+    >
+      <Icons.github className="h-4 w-4" />
+      <div className="ml-2">Sign in with GitHub</div>
+    </button>
+  )
 }

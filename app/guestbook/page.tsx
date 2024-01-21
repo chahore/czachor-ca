@@ -3,10 +3,8 @@ import { Metadata } from 'next'
 import { Suspense } from 'react'
 import { auth } from 'app/auth'
 import { SignIn, SignOut } from '@/components/auth/buttons'
-import Image from 'next/image'
 import { getGuestbookEntries } from '@/db/queries'
 import MessageForm, { DeleteEntry } from '@/components/pages/guestbook-form'
-import { deleteGuestbookEntry } from '@/lib/actions'
 
 export const metadata: Metadata = {
   title: guestbookPageConfig.title,
@@ -63,11 +61,11 @@ async function GuestbookEntries() {
           {isUserAuthorizedToDelete(entry) && <DeleteEntry id={entry.id} />}
 
           <span className="min-w-fit pr-1.5 text-muted-foreground">
-            <Image
+            <img
               src={entry.user_pic}
               alt={`Profile picture of ${entry.user_name}`}
-              width={50}
-              height={50}
+              width={16}
+              height={16}
               className="-mt-0.5 mr-1.5 inline h-4 w-4 rounded-full"
             />
             {entry.user_name}:

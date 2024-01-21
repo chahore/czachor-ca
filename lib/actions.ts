@@ -14,7 +14,7 @@ async function getSession(): Promise<Session> {
   return session
 }
 
-export async function saveGuestbookEntry(formData: string) {
+export async function saveGuestbookEntry(formData: FormData) {
   let session = await getSession()
   let user_name = session.user?.name as string
   let user_email = session.user?.email as string
@@ -24,7 +24,7 @@ export async function saveGuestbookEntry(formData: string) {
     throw new Error('Unauthorized')
   }
 
-  let entry = formData
+  let entry = formData.get('entry')?.toString() || ''
   let user_message = entry.slice(0, 80)
 
   const query = `

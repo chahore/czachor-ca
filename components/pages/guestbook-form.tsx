@@ -1,77 +1,50 @@
 'use client'
 
 import { deleteGuestbookEntry, saveGuestbookEntry } from '@/lib/actions'
+import { useRef } from 'react'
 import { useFormStatus } from 'react-dom'
 import { buttonVariants } from '../ui/button'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-import * as z from 'zod'
-import { Button } from '@/components/ui/button'
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
+import { Input } from '../ui/input'
 
-export const formSchema = z.object({
-  entry: z
-    .string()
-    .min(2, {
-      message: 'Message must be at least 2 characters.',
-    })
-    .max(80, {
-      message: 'Message must be less than 80 characters.',
-    }),
-})
-
-export default function MessageForm() {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      entry: '',
-    },
-  })
-
-  async function onSubmit(data: z.infer<typeof formSchema>) {
-    saveGuestbookEntry(data.entry)
-  }
+export default function Form() {
+  const formRef = useRef<HTMLFormElement>(null)
 
   return (
-    <Form {...form}>
-      <form
-        className="flex w-full space-x-1"
-        onSubmit={form.handleSubmit(onSubmit)}
-      >
-        <FormField
-          control={form.control}
-          name="entry"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  placeholder="Your message..."
-                  aria-label="Your message"
-                  className="w-[500px]"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button
-          className={buttonVariants({
-            variant: 'secondary',
-          })}
-          type="submit"
-        >
-          Sign
-        </Button>
-      </form>
-    </Form>
+    <form
+      className="relative max-w-[500px]"
+      ref={formRef}
+      action={async (formData) => {
+        await saveGuestbookEntry(formData)
+        formRef.current?.reset()
+      }}
+    >
+      <Input
+        aria-label="Your message"
+        placeholder="Your message..."
+        name="entry"
+        type="text"
+        required
+        className="pr-14"
+      />
+      <SubmitButton />
+    </form>
+  )
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus()
+
+  return (
+    <button
+      className={
+        buttonVariants({ variant: 'outline' }) +
+        ' absolute right-0 top-0 rounded-l-none'
+      }
+      disabled={pending}
+      type="submit"
+    >
+      Sign
+    </button>
   )
 }
 
