@@ -52,7 +52,7 @@ async function WallEntries() {
   }
 
   return (
-    <div className="pt-2">
+    <div className="pt-5">
       {entries.map((entry) => (
         <article
           key={entry.id}
