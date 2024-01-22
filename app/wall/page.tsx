@@ -45,8 +45,8 @@ async function WallEntries() {
     return null
   }
 
-  const isUserAuthorizedToDelete = (entry) => {
-    return entries.some(
+  const isUserAuthorizedToDelete = (entries) => {
+    return entries.map(
       (entry) =>
         session?.user?.email === entry.user_email ||
         session?.user?.email === 'david@czachor.dev'
