@@ -15,26 +15,32 @@ async function getSession(): Promise<Session> {
 }
 
 export async function saveWallEntry(formData: FormData) {
-  let session = await getSession()
-  let user_name = session.user?.name as string
-  let user_email = session.user?.email as string
-  let user_pic = session.user?.image as string
+  try {
+    let session = await getSession()
+    let user_name = session.user?.name as string
+    let user_email = session.user?.email as string
+    let user_pic = session.user?.image as string
 
-  if (!session.user) {
-    throw new Error('Unauthorized')
+    if (!session.user) {
+      throw new Error('Unauthorized')
+    }
+
+    let entry = formData.get('entry')?.toString() || ''
+    let user_message = entry.slice(0, 80)
+
+    const query = {
+      sql: `
+        INSERT INTO wall (user_name, user_email, user_pic, user_message, created_at)
+        VALUES (?, ?, ?, ?, datetime('now'))
+      `,
+      args: [user_name, user_email, user_pic, user_message],
+    }
+
+    await db.execute(query)
+    revalidatePath('/wall')
+  } catch (error) {
+    throw error
   }
-
-  let entry = formData.get('entry')?.toString() || ''
-  let user_message = entry.slice(0, 80)
-
-  const query = `
-  INSERT INTO wall (user_name, user_email, user_pic, user_message, created_at)
-  VALUES ('${user_name}', '${user_email}', '${user_pic}', '${user_message}', datetime('now'))
-`
-
-  await db.execute(query)
-
-  revalidatePath('/wall')
 }
 
 export async function deleteWallEntry(id: number) {
