@@ -46,9 +46,10 @@ async function WallEntries() {
   }
 
   const isUserAuthorizedToDelete = (entry) => {
-    return (
-      session?.user?.email === entry.user_email ||
-      session?.user?.email === 'david@czachor.dev'
+    return entries.some(
+      (entry) =>
+        session?.user?.email === entry.user_email ||
+        session?.user?.email === 'david@czachor.dev'
     )
   }
 
