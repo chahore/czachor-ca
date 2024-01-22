@@ -4,7 +4,7 @@ import { db } from '@/db'
 import { Row } from '@libsql/client'
 import { unstable_noStore as noStore } from 'next/cache'
 
-interface WallEntry extends Row {
+export interface WallEntry extends Row {
   id: number
   user_name: string
   user_email: string
