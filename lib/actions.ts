@@ -45,11 +45,25 @@ export async function deleteWallEntry(id: number) {
     throw new Error('Unauthorized')
   }
 
-  const entry = `
-    DELETE FROM wall
-    WHERE id = ${id}
-  `
-  await db.execute(entry)
+  const isAdmin = user_email === 'david@czachor.dev'
 
-  revalidatePath('/wall')
+  try {
+    let query
+    if (isAdmin) {
+      query = {
+        sql: 'DELETE FROM wall WHERE id = ?',
+        args: [id],
+      }
+    } else {
+      query = {
+        sql: 'DELETE FROM wall WHERE id = ? AND user_email = ?',
+        args: [id, user_email],
+      }
+    }
+
+    await db.execute(query)
+    revalidatePath('/wall')
+  } catch (error) {
+    throw error
+  }
 }
