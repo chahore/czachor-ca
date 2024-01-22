@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import { Suspense } from 'react'
 import { auth } from 'app/auth'
 import { SignIn, SignOut } from '@/components/auth/buttons'
-import { getWallEntries } from '@/db/queries'
+import { WallEntry, getWallEntries } from '@/db/queries'
 import MessageForm, { DeleteEntry } from '@/components/pages/wall-form'
 import { EntrySkeleton } from '@/components/skeletons/entry-skeleton'
 
@@ -45,11 +45,10 @@ async function WallEntries() {
     return null
   }
 
-  const isUserAuthorizedToDelete = (entries) => {
-    return entries.map(
-      (entry) =>
-        session?.user?.email === entry.user_email ||
-        session?.user?.email === 'david@czachor.dev'
+  const isUserAuthorizedToDelete = (entry: WallEntry) => {
+    return (
+      session?.user?.email === entry.user_email ||
+      session?.user?.email === 'david@czachor.dev'
     )
   }
 
