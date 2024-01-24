@@ -15,7 +15,7 @@
     "@vercel/speed-insights": "^1.0.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
-    "framer-motion": "^10.16.4",
+    "framer-motion": "latest",
     "geist": "^1.1.0",
     "lucide-react": "latest",
     "next": "canary",
