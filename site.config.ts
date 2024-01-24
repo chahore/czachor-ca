@@ -42,7 +42,7 @@ export const projects = [
   },
 ]
 
-export const projectPageConfig = {
+export const workPageConfig = {
   title: 'Work',
   description: 'A showcase of work done by David Czachor',
 }

@@ -1,12 +1,12 @@
 import { Icons } from '@/components/global/icons'
 import ListView from '@/components/pages/list-view'
 import Badge from '@/components/ui/badge'
-import { projectPageConfig, projects } from '@/site.config'
+import { workPageConfig, projects } from '@/site.config'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: projectPageConfig.title,
-  description: projectPageConfig.description,
+  title: workPageConfig.title,
+  description: workPageConfig.description,
 }
 
 export default function Page() {
