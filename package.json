@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@libsql/client": "^0.4.0-pre.7",
+    "@libsql/client": "0.4.0",
     "@radix-ui/react-label": "^2.0.2",
     "@vercel/analytics": "^1.1.1",
     "@vercel/speed-insights": "^1.0.5",
