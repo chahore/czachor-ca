@@ -1,5 +1,3 @@
-export const runtime = 'edge'
-
 import { wallPageConfig } from '@/site.config'
 import { Metadata } from 'next'
 import { Suspense } from 'react'
