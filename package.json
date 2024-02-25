@@ -18,7 +18,7 @@
     "framer-motion": "latest",
     "geist": "^1.1.0",
     "lucide-react": "latest",
-    "next": "canary",
+    "next": "^14.1.0",
     "next-auth": "5.0.0-beta.3",
     "react": "^18",
     "react-dom": "^18",

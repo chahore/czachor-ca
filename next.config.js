@@ -1,10 +1,6 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  experimental: {
-    ppr: true,
-    useLightningcss: true,
-  },
   images: {
     remotePatterns: [
       {
