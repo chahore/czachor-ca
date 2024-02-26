@@ -24,7 +24,7 @@ async function getSession(): Promise<Session> {
 
 export const action = createSafeActionClient()
 
-export const createWallEntry = action(
+export const saveWallEntry = action(
   saveWallEntrySchema,
   async ({ user_message }) => {
     const session = await auth()
@@ -55,8 +55,8 @@ export const deleteWallEntry = action(deleteWallEntrySchema, async ({ id }) => {
   }
 })
 
-export const fetchWallEntries = action(wallEntrySchema, async () => {
+export const fetchWallEntries = async () => {
   const entries = await db.query.wallEntries.findMany()
   revalidatePath('/wall')
   return { success: entries }
-})
+}

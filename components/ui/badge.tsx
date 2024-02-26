@@ -1,6 +1,8 @@
 import { buttonVariants } from './button'
 
-export default function Badge(props) {
+export default function Badge(
+  props: React.AnchorHTMLAttributes<HTMLAnchorElement>
+) {
   return (
     <a
       {...props}
