@@ -4,7 +4,11 @@ import { db } from '@/server/db'
 import { auth } from '../app/auth'
 import { type Session } from 'next-auth'
 import { createSafeActionClient } from 'next-safe-action'
-import { deleteWallEntrySchema, saveWallEntrySchema } from '@/lib/zod-schemas'
+import {
+  deleteWallEntrySchema,
+  saveWallEntrySchema,
+  wallEntrySchema,
+} from '@/lib/zod-schemas'
 import { revalidatePath } from 'next/cache'
 import { wallEntries } from './db/schema'
 import { eq } from 'drizzle-orm'
@@ -26,15 +30,18 @@ export const createWallEntry = action(
     const session = await auth()
     if (!user_message || !session?.user?.name)
       return { error: 'Something went wrong' }
-    const newWallEntry = await db.insert(wallEntries).values({
-      user_message: user_message,
-      user_name: session.user.name,
-      user_email: session.user.email,
-      user_pic: session.user.image,
-    })
+    const newWallEntry = await db
+      .insert(wallEntries)
+      .values({
+        user_message: user_message,
+        user_name: session.user.name,
+        user_email: session.user.email,
+        user_pic: session.user.image,
+      })
+      .returning()
     revalidatePath('/wall')
     if (!newWallEntry) return { error: 'Could not create wall entry.' }
-    if (newWallEntry) return { success: 'Wall entry created.' }
+    if (newWallEntry[0].id) return { success: 'Wall entry created.' }
   }
 )
 
@@ -46,4 +53,10 @@ export const deleteWallEntry = action(deleteWallEntrySchema, async ({ id }) => {
   } catch (error) {
     return { error: 'Something went wrong.' }
   }
+})
+
+export const fetchWallEntries = action(wallEntrySchema, async () => {
+  const entries = await db.query.wallEntries.findMany()
+  revalidatePath('/wall')
+  return { success: entries }
 })

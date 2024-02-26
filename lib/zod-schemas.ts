@@ -14,3 +14,9 @@ export const saveWallEntrySchema = z.object({
 export const deleteWallEntrySchema = z.object({
   id: z.number(),
 })
+
+export const wallEntrySchema = z.object({
+  user_name: z.string(),
+  user_pic: z.string(),
+  user_message: z.string(),
+})
