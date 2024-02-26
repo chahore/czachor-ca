@@ -6,7 +6,9 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:generate": "drizzle-kit generate:pg --config drizzle.config.ts",
+    "db:push": "drizzle-kit push:pg --config drizzle.config.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.8.1",
@@ -15,6 +17,7 @@
     "@vercel/speed-insights": "^1.0.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "dotenv": "^16.4.5",
     "drizzle-orm": "^0.29.4",
     "framer-motion": "latest",
     "geist": "^1.1.0",
@@ -22,6 +25,7 @@
     "next": "^14.1.0",
     "next-auth": "5.0.0-beta.3",
     "next-safe-action": "^6.1.0",
+    "pg": "^8.11.3",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.0.0",
