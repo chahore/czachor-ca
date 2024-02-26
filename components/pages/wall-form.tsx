@@ -1,6 +1,6 @@
 'use client'
 
-import { deleteWallEntry, saveWallEntry } from '@/lib/actions'
+import { deleteWallEntry, saveWallEntry } from '@/server/lib/actions'
 import { useRef } from 'react'
 import { useFormStatus } from 'react-dom'
 import { buttonVariants } from '../ui/button'

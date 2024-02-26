@@ -1,6 +1,6 @@
 'use server'
 
-import { db } from '@/db'
+import { db } from '@/server/db'
 import { auth } from 'app/auth'
 import { type Session } from 'next-auth'
 import { revalidatePath, unstable_noStore as noStore } from 'next/cache'

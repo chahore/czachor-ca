@@ -7,7 +7,7 @@ import SiteFooter from '@/components/global/site-footer'
 import { TailwindIndicator } from '@/components/global/tailwind-indicator'
 import { Analytics } from '@vercel/analytics/react'
 import { siteConfig } from '@/site.config'
-import { fontSerif } from '@/lib/fonts'
+import { fontSerif } from '@/server/lib/fonts'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export const metadata: Metadata = {

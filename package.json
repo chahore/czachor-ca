@@ -9,26 +9,30 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@libsql/client": "latest",
+    "@neondatabase/serverless": "^0.8.1",
     "@radix-ui/react-label": "^2.0.2",
     "@vercel/analytics": "^1.1.1",
     "@vercel/speed-insights": "^1.0.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "drizzle-orm": "^0.29.4",
     "framer-motion": "latest",
     "geist": "^1.1.0",
     "lucide-react": "latest",
     "next": "^14.1.0",
     "next-auth": "5.0.0-beta.3",
+    "next-safe-action": "^6.1.0",
     "react": "^18",
     "react-dom": "^18",
-    "tailwind-merge": "^2.0.0"
+    "tailwind-merge": "^2.0.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
+    "drizzle-kit": "^0.20.14",
     "eslint": "^8",
     "eslint-config-next": "^14.0.1",
     "postcss": "^8",

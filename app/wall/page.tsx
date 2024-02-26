@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import { Suspense } from 'react'
 import { auth } from 'app/auth'
 import { SignIn, SignOut } from '@/components/auth/buttons'
-import { WallEntry, getWallEntries } from '@/db/queries'
+import { WallEntry, getWallEntries } from '@/server/db/queries'
 import MessageForm, { DeleteEntry } from '@/components/pages/wall-form'
 import { EntrySkeleton } from '@/components/skeletons/entry-skeleton'
 
