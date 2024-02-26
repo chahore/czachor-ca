@@ -4,11 +4,7 @@ import { db } from '@/server/db'
 import { auth } from '../app/auth'
 import { type Session } from 'next-auth'
 import { createSafeActionClient } from 'next-safe-action'
-import {
-  deleteWallEntrySchema,
-  saveWallEntrySchema,
-  wallEntrySchema,
-} from '@/lib/zod-schemas'
+import { deleteWallEntrySchema, saveWallEntrySchema } from '@/lib/zod-schemas'
 import { revalidatePath } from 'next/cache'
 import { wallEntries } from './db/schema'
 import { eq } from 'drizzle-orm'
@@ -56,7 +52,9 @@ export const deleteWallEntry = action(deleteWallEntrySchema, async ({ id }) => {
 })
 
 export const fetchWallEntries = async () => {
-  const entries = await db.query.wallEntries.findMany()
+  const entries = await db.query.wallEntries.findMany({
+    orderBy: (wallEntries, { desc }) => [desc(wallEntries.created_at)],
+  })
   revalidatePath('/wall')
   return { success: entries }
 }
