@@ -2,23 +2,13 @@
 
 import { db } from '@/server/db'
 import { auth } from '../app/auth'
-import { type Session } from 'next-auth'
 import { createSafeActionClient } from 'next-safe-action'
 import { deleteWallEntrySchema, saveWallEntrySchema } from '@/lib/zod-schemas'
 import { revalidatePath } from 'next/cache'
 import { wallEntries } from './db/schema'
 import { eq } from 'drizzle-orm'
 
-async function getSession(): Promise<Session> {
-  let session = await auth()
-  if (!session || !session.user) {
-    throw new Error('Unauthorized')
-  }
-
-  return session
-}
-
-export const action = createSafeActionClient()
+const action = createSafeActionClient()
 
 export const saveWallEntry = action(
   saveWallEntrySchema,
