@@ -22,7 +22,7 @@ export function SignIn() {
   return (
     <button
       className={buttonVariants({ variant: 'outline' })}
-      onClick={() => signIn('github')}
+      onClick={() => signIn('linkedin')}
     >
       <Icons.github className="h-4 w-4" />
       <div className="ml-2">Sign in with GitHub</div>
