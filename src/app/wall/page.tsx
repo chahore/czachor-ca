@@ -1,8 +1,8 @@
-import { SignIn, SignOut } from '@/src/app/components/auth/buttons'
-import { EntrySkeleton } from '@/src/app/components/skeletons/entry-skeleton'
-import { WallEntries } from '@/src/app/components/wall/wall-entries'
-import MessageForm from '@/src/app/components/wall/wall-form'
-import { wallPageConfig } from '@/src/site.config'
+import { SignIn, SignOut } from '@/app/components/auth/buttons'
+import { EntrySkeleton } from '@/app/components/skeletons/entry-skeleton'
+import { WallEntries } from '@/app/components/wall/wall-entries'
+import MessageForm from '@/app/components/wall/wall-form'
+import { wallPageConfig } from '@/site.config'
 import { Metadata } from 'next'
 import { Suspense } from 'react'
 

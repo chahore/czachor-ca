@@ -1,16 +1,16 @@
 'use client'
 
-import { Button } from '@/src/app/components/ui/button'
+import { Button } from '@/app/components/ui/button'
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-} from '@/src/app/components/ui/form'
-import { Input } from '@/src/app/components/ui/input'
-import { saveWallEntrySchema } from '@/src/lib/zod-schemas'
-import { deleteWallEntry, saveWallEntry } from '@/src/server/actions'
+} from '@/app/components/ui/form'
+import { Input } from '@/app/components/ui/input'
+import { saveWallEntrySchema } from '@/lib/zod-schemas'
+import { deleteWallEntry, saveWallEntry } from '@/utils/actions'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useAction } from 'next-safe-action/hooks'
 import { useForm } from 'react-hook-form'

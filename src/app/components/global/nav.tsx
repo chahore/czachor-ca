@@ -1,7 +1,7 @@
 'use client'
 
-import { cn } from '@/src/lib/utils'
-import { siteConfig } from '@/src/site.config'
+import { cn } from '@/lib/utils'
+import { siteConfig } from '@/site.config'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'

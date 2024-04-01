@@ -1,4 +1,4 @@
-import { siteConfig } from '@/src/site.config'
+import { siteConfig } from '@/site.config'
 
 import Socials from './socials'
 
