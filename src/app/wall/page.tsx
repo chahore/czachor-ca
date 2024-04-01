@@ -2,10 +2,10 @@ import { wallPageConfig } from '@/site.config'
 import { Metadata } from 'next'
 import { Suspense } from 'react'
 import { auth } from '../auth'
-import { SignIn, SignOut } from '@/components/auth/buttons'
-import MessageForm from '@/components/wall/wall-form'
-import { EntrySkeleton } from '@/components/skeletons/entry-skeleton'
-import { WallEntries } from '@/components/wall/wall-entries'
+import { SignIn, SignOut } from '@/src/app/components/auth/buttons'
+import MessageForm from '@/src/app/components/wall/wall-form'
+import { EntrySkeleton } from '@/src/app/components/skeletons/entry-skeleton'
+import { WallEntries } from '@/src/app/components/wall/wall-entries'
 
 export const metadata: Metadata = {
   title: wallPageConfig.title,

@@ -1,5 +1,5 @@
-import { auth } from '@/app/auth'
-import { fetchWallEntries } from '@/server/actions'
+import { auth } from '@/src/app/auth'
+import { fetchWallEntries } from '@/src/server/actions'
 import Image from 'next/image'
 import { DeleteEntry } from './wall-form'
 

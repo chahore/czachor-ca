@@ -8,14 +8,14 @@ import {
   FormField,
   FormItem,
   FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
+} from '@/src/app/components/ui/form'
+import { Input } from '@/src/app/components/ui/input'
+import { Button } from '@/src/app/components/ui/button'
 import { useForm } from 'react-hook-form'
-import { saveWallEntrySchema } from '@/lib/zod-schemas'
+import { saveWallEntrySchema } from '@/src/lib/zod-schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { deleteWallEntry, saveWallEntry } from '@/server/actions'
+import { deleteWallEntry, saveWallEntry } from '@/src/server/actions'
 
 export default function WallForm() {
   const form = useForm<z.infer<typeof saveWallEntrySchema>>({

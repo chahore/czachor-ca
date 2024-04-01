@@ -1,9 +1,12 @@
 'use server'
 
-import { db } from '@/server/db'
+import { db } from '@/src/server/db'
 import { auth } from '../app/auth'
 import { createSafeActionClient } from 'next-safe-action'
-import { deleteWallEntrySchema, saveWallEntrySchema } from '@/lib/zod-schemas'
+import {
+  deleteWallEntrySchema,
+  saveWallEntrySchema,
+} from '@/src/lib/zod-schemas'
 import { revalidatePath } from 'next/cache'
 import { wallEntries } from './db/schema'
 import { eq } from 'drizzle-orm'
