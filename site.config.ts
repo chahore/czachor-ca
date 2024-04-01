@@ -24,12 +24,12 @@ export const siteConfig = {
       href: 'mailto:david@czachor.dev',
     },
     {
-      title: 'linkedin',
-      href: 'https://www.linkedin.com/in/davidczachor/',
-    },
-    {
       title: 'github',
       href: 'https://github.com/davidczachor',
+    },
+    {
+      title: 'linkedin',
+      href: 'https://www.linkedin.com/in/davidczachor/',
     },
   ],
 }

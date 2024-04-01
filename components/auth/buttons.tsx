@@ -24,8 +24,8 @@ export function SignIn() {
       className={buttonVariants({ variant: 'outline' })}
       onClick={() => signIn('linkedin')}
     >
-      <Icons.github className="h-4 w-4" />
-      <div className="ml-2">Sign in with GitHub</div>
+      <Icons.linkedin className="h-4 w-4" />
+      <div className="ml-2">Sign in with LinkedIn</div>
     </button>
   )
 }

@@ -1,5 +1,6 @@
 import NextAuth from 'next-auth'
 import linkedin from 'next-auth/providers/linkedin'
+import { type LinkedInProfile } from 'next-auth/providers/linkedin'
 
 export const {
   handlers: { GET, POST },
@@ -14,22 +15,23 @@ export const {
         url: 'https://www.linkedin.com/oauth/v2/authorization',
         params: { scope: 'openid profile email' },
       },
+      token: {
+        url: 'https://www.linkedin.com/oauth/v2/accessToken',
+      },
+      userinfo: {
+        url: 'https://api.linkedin.com/v2/userinfo',
+      },
       wellKnown:
         'https://www.linkedin.com/oauth/.well-known/openid-configuration',
       issuer: 'https://www.linkedin.com',
       jwks_endpoint: 'https://www.linkedin.com/oauth/openid/jwks',
-      async profile(profile) {
+      async profile(profile: LinkedInProfile) {
         return {
           id: profile.sub,
           name: profile.name,
-          firstname: profile.given_name,
-          lastname: profile.family_name,
           email: profile.email,
         }
       },
     }),
   ],
-  pages: {
-    signIn: '/sign-in',
-  },
 })

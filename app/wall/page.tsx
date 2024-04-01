@@ -32,7 +32,7 @@ const WallForm = async () => {
 
   return session?.user ? (
     <>
-      <MessageForm />
+      {/* <MessageForm /> */}
       <SignOut />
     </>
   ) : (
