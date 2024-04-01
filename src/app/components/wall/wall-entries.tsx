@@ -1,4 +1,3 @@
-import { auth } from '@/app/auth'
 import { fetchWallEntries } from '@/utils/actions'
 import Image from 'next/image'
 
@@ -6,7 +5,7 @@ import { DeleteEntry } from './wall-form'
 
 export async function WallEntries() {
   const { success: entries } = await fetchWallEntries()
-  let session = await auth()
+  // let session = await auth()
 
   if (entries.length === 0) {
     return null
