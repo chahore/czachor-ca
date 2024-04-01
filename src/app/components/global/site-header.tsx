@@ -1,5 +1,4 @@
 import Nav from './nav'
-import Socials from './socials'
 
 export default async function SiteHeader() {
   return (

@@ -1,15 +1,16 @@
 'use server'
 
-import { db } from '@/src/server/db'
-import { auth } from '../app/auth'
-import { createSafeActionClient } from 'next-safe-action'
 import {
   deleteWallEntrySchema,
   saveWallEntrySchema,
 } from '@/src/lib/zod-schemas'
-import { revalidatePath } from 'next/cache'
-import { wallEntries } from './db/schema'
+import { db } from '@/src/server/db'
 import { eq } from 'drizzle-orm'
+import { createSafeActionClient } from 'next-safe-action'
+import { revalidatePath } from 'next/cache'
+
+import { auth } from '../app/auth'
+import { wallEntries } from './db/schema'
 
 const action = createSafeActionClient()
 

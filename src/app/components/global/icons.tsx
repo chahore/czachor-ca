@@ -1,10 +1,4 @@
-import {
-  ArrowUpRight,
-  Mail,
-  LucideProps,
-  type LucideIcon,
-  Linkedin,
-} from 'lucide-react'
+import { ArrowUpRight, type LucideIcon, LucideProps, Mail } from 'lucide-react'
 
 export type Icon = LucideIcon
 

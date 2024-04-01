@@ -1,6 +1,7 @@
 import { auth } from '@/src/app/auth'
 import { fetchWallEntries } from '@/src/server/actions'
 import Image from 'next/image'
+
 import { DeleteEntry } from './wall-form'
 
 export async function WallEntries() {

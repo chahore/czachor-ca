@@ -1,6 +1,7 @@
 import Link from 'next/link'
-import { buttonVariants } from '../ui/button'
+
 import { Icons } from '../global/icons'
+import { buttonVariants } from '../ui/button'
 
 export type ListViewProps = {
   title: string

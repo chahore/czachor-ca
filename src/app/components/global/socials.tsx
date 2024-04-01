@@ -1,7 +1,8 @@
+import { siteConfig } from '@/src/site.config'
 import Link from 'next/link'
+
 import { buttonVariants } from '../ui/button'
 import { Icons } from './icons'
-import { siteConfig } from '@/site.config'
 
 export default async function Socials() {
   const iconClassName = 'h-4 w-4'

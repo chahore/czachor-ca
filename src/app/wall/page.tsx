@@ -1,11 +1,12 @@
-import { wallPageConfig } from '@/site.config'
-import { Metadata } from 'next'
-import { Suspense } from 'react'
-import { auth } from '../auth'
 import { SignIn, SignOut } from '@/src/app/components/auth/buttons'
-import MessageForm from '@/src/app/components/wall/wall-form'
 import { EntrySkeleton } from '@/src/app/components/skeletons/entry-skeleton'
 import { WallEntries } from '@/src/app/components/wall/wall-entries'
+import MessageForm from '@/src/app/components/wall/wall-form'
+import { wallPageConfig } from '@/src/site.config'
+import { Metadata } from 'next'
+import { Suspense } from 'react'
+
+import { auth } from '../auth'
 
 export const metadata: Metadata = {
   title: wallPageConfig.title,
@@ -32,7 +33,7 @@ const WallForm = async () => {
 
   return session?.user ? (
     <>
-      {/* <MessageForm /> */}
+      <MessageForm />
       <SignOut />
     </>
   ) : (

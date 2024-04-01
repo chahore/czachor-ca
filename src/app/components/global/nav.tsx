@@ -1,10 +1,10 @@
 'use client'
 
-import Link from 'next/link'
 import { cn } from '@/src/lib/utils'
-import { usePathname } from 'next/navigation'
+import { siteConfig } from '@/src/site.config'
 import { motion } from 'framer-motion'
-import { siteConfig } from '@/site.config'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export default function Nav() {
   let pathname = usePathname()

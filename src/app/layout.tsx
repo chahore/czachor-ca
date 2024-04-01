@@ -1,14 +1,14 @@
-import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
-import { GeistMono } from 'geist/font/mono'
 import '@/app/globals.css'
-import SiteHeader from '@/src/app/components/global/site-header'
 import SiteFooter from '@/src/app/components/global/site-footer'
-import { Analytics } from '@vercel/analytics/react'
-import { siteConfig } from '@/site.config'
+import SiteHeader from '@/src/app/components/global/site-header'
 import { fontSerif } from '@/src/lib/fonts'
-import { SpeedInsights } from '@vercel/speed-insights/next'
 import { cn } from '@/src/lib/utils'
+import { siteConfig } from '@/src/site.config'
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import { GeistMono } from 'geist/font/mono'
+import { GeistSans } from 'geist/font/sans'
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: {

@@ -1,7 +1,7 @@
 import { Icons } from '@/src/app/components/global/icons'
 import ListView from '@/src/app/components/pages/list-view'
 import Badge from '@/src/app/components/ui/badge'
-import { workPageConfig, projects } from '@/site.config'
+import { projects, workPageConfig } from '@/src/site.config'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {

@@ -1,4 +1,5 @@
-import { siteConfig } from '@/site.config'
+import { siteConfig } from '@/src/site.config'
+
 import Socials from './socials'
 
 export default function SiteFooter() {
