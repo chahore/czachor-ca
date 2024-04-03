@@ -7,6 +7,7 @@ import { createSafeActionClient } from 'next-safe-action'
 import { revalidatePath } from 'next/cache'
 
 import { wallEntries } from './db/schema'
+import { createClient } from './supabase/server'
 
 const action = createSafeActionClient()
 
@@ -47,4 +48,21 @@ export const fetchWallEntries = async () => {
   })
   revalidatePath('/wall')
   return { success: entries }
+}
+
+export async function signInWithLinkedIn() {
+  const supabase = createClient()
+
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'linkedin_oidc',
+    options: {
+      redirectTo: `${window.location.origin}/wall`,
+    },
+  })
+
+  if (error) {
+    return { error: 'Something went wrong.' }
+  }
+
+  revalidatePath('/wall')
 }

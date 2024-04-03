@@ -1,23 +1,19 @@
 'use client'
 
 import { createClient } from '@/utils/supabase/client'
+import { useRouter } from 'next/navigation'
 
 import { Icons } from '../global/icons'
 import { Button, buttonVariants } from '../ui/button'
 
 const supabase = createClient()
 
-async function signInWithLinkedIn() {
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: 'linkedin_oidc',
-  })
-}
-
-async function signOut() {
-  await supabase.auth.signOut()
-}
-
 export function SignOut() {
+  const router = useRouter()
+  const signOut = async () => {
+    await supabase.auth.signOut()
+    router.refresh()
+  }
   return (
     <Button
       onClick={() => signOut()}
@@ -32,6 +28,15 @@ export function SignOut() {
 }
 
 export function SignIn() {
+  const supabase = createClient()
+  const signInWithLinkedIn = () =>
+    supabase.auth.signInWithOAuth({
+      provider: 'linkedin_oidc',
+      options: {
+        redirectTo: `${location.origin}/auth/callback`,
+      },
+    })
+
   return (
     <button
       className={buttonVariants({ variant: 'outline' })}
