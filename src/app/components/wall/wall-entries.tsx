@@ -5,22 +5,21 @@ import Image from 'next/image'
 import { DeleteEntry } from './wall-form'
 
 export async function WallEntries() {
-  const { success: entries } = await fetchWallEntries()
+  const { data: entries } = await fetchWallEntries()
   const supabase = createClient()
   const { data: session } = await supabase.auth.getUser()
 
-  if (entries?.length === 0) {
+  if (entries === null) {
     return null
   }
 
-  type Entry = (typeof entries)[0]
-
-  const isUserAuthorizedToDelete = (entry: Entry) => {
+  const isUserAuthorizedToDelete = (entry: (typeof entries)[0]) => {
     return (
       session?.user?.email === entry.user_email ||
       session?.user?.email === 'david@czachor.ca'
     )
   }
+  console.log(entries)
 
   return (
     <div className="pt-5">

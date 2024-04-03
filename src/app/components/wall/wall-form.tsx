@@ -12,7 +12,6 @@ import { Input } from '@/app/components/ui/input'
 import { saveWallEntrySchema } from '@/lib/zod-schemas'
 import { deleteWallEntry, saveWallEntry } from '@/utils/actions'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useAction } from 'next-safe-action/hooks'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
@@ -26,14 +25,8 @@ export default function WallForm() {
     },
   })
 
-  const { execute, status, result } = useAction(saveWallEntry, {
-    onSuccess: () => {
-      form.reset()
-    },
-  })
-
   function onSubmit(entry: z.infer<typeof saveWallEntrySchema>) {
-    execute(entry)
+    saveWallEntry(entry).then(() => form.reset())
   }
 
   return (

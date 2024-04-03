@@ -1,15 +1,17 @@
 'use server'
 
-import { saveWallEntrySchema } from '@/lib/zod-schemas'
+import { unstable_noStore as noStore } from 'next/cache'
 import { revalidatePath } from 'next/cache'
 
 import { createClient } from './supabase/server'
-import { type Database } from '@/types/supabase'
 
-const supabase<Database> = createClient()
+const supabase = createClient()
 
-export async function saveWallEntry(formData: FormData) {
-  const { user_message } = saveWallEntrySchema.parse(formData)
+export async function saveWallEntry({
+  user_message,
+}: {
+  user_message: string
+}) {
   const { data: session } = await supabase.auth.getUser()
   await supabase.from('wall_entries').insert({
     user_message: user_message,
@@ -23,13 +25,15 @@ export async function saveWallEntry(formData: FormData) {
   revalidatePath('/wall')
 }
 
-export async function deleteWallEntry(id: number) {
+export async function deleteWallEntry({ id }: { id: number }) {
   await supabase.from('wall_entries').delete().eq('id', id)
   revalidatePath('/wall')
 }
 
 export async function fetchWallEntries() {
-  const { data: entries, error } = await supabase.from('wall_entries').select()
-  if (error) return { error }
-  return { success: entries }
+  noStore()
+  return await supabase
+    .from('wall_entries')
+    .select('*')
+    .order('created_at', { ascending: false })
 }
