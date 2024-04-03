@@ -10,14 +10,3 @@ export const saveWallEntrySchema = z.object({
       message: 'Wall Entry cannot be more than 80 characters.',
     }),
 })
-
-export const deleteWallEntrySchema = z.object({
-  id: z.number(),
-})
-
-export const wallEntrySchema = z.object({
-  user_name: z.string(),
-  user_pic: z.string(),
-  user_message: z.string(),
-  user_email: z.string(),
-})

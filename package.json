@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db:generate": "drizzle-kit generate:pg --config drizzle.config.ts",
-    "db:push": "drizzle-kit push:pg --config drizzle.config.ts"
+    "supabase:types": "supabase gen types typescript --project-id 'drcdvrexeqghwmzwqhmx' --schema public > src/types/supabase.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",

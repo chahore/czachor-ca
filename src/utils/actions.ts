@@ -1,53 +1,35 @@
 'use server'
 
-import { deleteWallEntrySchema, saveWallEntrySchema } from '@/lib/zod-schemas'
-import { db } from '@/utils/db'
-import { eq } from 'drizzle-orm'
-import { createSafeActionClient } from 'next-safe-action'
+import { saveWallEntrySchema } from '@/lib/zod-schemas'
 import { revalidatePath } from 'next/cache'
 
-import { wallEntries } from './db/schema'
 import { createClient } from './supabase/server'
+import { type Database } from '@/types/supabase'
 
-const action = createSafeActionClient()
+const supabase<Database> = createClient()
 
-export const saveWallEntry = action(
-  saveWallEntrySchema,
-  async ({ user_message }) => {
-    const supabase = createClient()
-    const { data } = await supabase.auth.getUser()
-    if (!user_message || !data.user?.email)
-      return { error: 'Something went wrong' }
-    // console.log(data.user.user_metadata)
-    const newWallEntry = await db
-      .insert(wallEntries)
-      .values({
-        user_message: user_message,
-        // user_name: session.user.name,
-        // user_email: session.user.email,
-        // user_pic: session.user.image,
-      })
-      .returning()
-    revalidatePath('/wall')
-    if (!newWallEntry) return { error: 'Could not create wall entry.' }
-    if (newWallEntry[0].id) return { success: 'Wall entry created.' }
-  }
-)
-
-export const deleteWallEntry = action(deleteWallEntrySchema, async ({ id }) => {
-  try {
-    await db.delete(wallEntries).where(eq(wallEntries.id, id))
-    revalidatePath('/wall')
-    return { success: 'Wall entry deleted.' }
-  } catch (error) {
-    return { error: 'Something went wrong.' }
-  }
-})
-
-export const fetchWallEntries = async () => {
-  const entries = await db.query.wallEntries.findMany({
-    orderBy: (wallEntries, { desc }) => [desc(wallEntries.created_at)],
+export async function saveWallEntry(formData: FormData) {
+  const { user_message } = saveWallEntrySchema.parse(formData)
+  const { data: session } = await supabase.auth.getUser()
+  await supabase.from('wall_entries').insert({
+    user_message: user_message,
+    user_email: session.user?.email,
+    user_name: session.user?.user_metadata.name,
+    user_pic: session.user?.user_metadata.picture,
   })
+  if (!user_message || !session.user?.email)
+    return { error: 'Something went wrong' }
+
   revalidatePath('/wall')
+}
+
+export async function deleteWallEntry(id: number) {
+  await supabase.from('wall_entries').delete().eq('id', id)
+  revalidatePath('/wall')
+}
+
+export async function fetchWallEntries() {
+  const { data: entries, error } = await supabase.from('wall_entries').select()
+  if (error) return { error }
   return { success: entries }
 }

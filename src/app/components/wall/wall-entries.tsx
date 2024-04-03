@@ -7,9 +7,9 @@ import { DeleteEntry } from './wall-form'
 export async function WallEntries() {
   const { success: entries } = await fetchWallEntries()
   const supabase = createClient()
-  const { data } = await supabase.auth.getSession()
+  const { data: session } = await supabase.auth.getUser()
 
-  if (entries.length === 0) {
+  if (entries?.length === 0) {
     return null
   }
 
@@ -17,14 +17,14 @@ export async function WallEntries() {
 
   const isUserAuthorizedToDelete = (entry: Entry) => {
     return (
-      data.session?.user.email === entry.user_email ||
-      data.session?.user.email === 'david@czachor.ca'
+      session?.user?.email === entry.user_email ||
+      session?.user?.email === 'david@czachor.ca'
     )
   }
 
   return (
     <div className="pt-5">
-      {entries.map((entry) => (
+      {entries?.map((entry) => (
         <article
           key={entry.id}
           className="mb-2 space-x-1.5 text-sm "
