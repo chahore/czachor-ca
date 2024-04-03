@@ -1,11 +1,13 @@
 import { fetchWallEntries } from '@/utils/actions'
+import { createClient } from '@/utils/supabase/server'
 import Image from 'next/image'
 
 import { DeleteEntry } from './wall-form'
 
 export async function WallEntries() {
   const { success: entries } = await fetchWallEntries()
-  // let session = await auth()
+  const supabase = createClient()
+  const { data } = await supabase.auth.getSession()
 
   if (entries.length === 0) {
     return null
@@ -15,8 +17,8 @@ export async function WallEntries() {
 
   const isUserAuthorizedToDelete = (entry: Entry) => {
     return (
-      session?.user?.email === entry.user_email ||
-      session?.user?.email === 'david@czachor.dev'
+      data.session?.user.email === entry.user_email ||
+      data.session?.user.email === 'david@czachor.ca'
     )
   }
 

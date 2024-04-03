@@ -11,26 +11,28 @@ import { createClient } from './supabase/server'
 
 const action = createSafeActionClient()
 
-// export const saveWallEntry = action(
-//   saveWallEntrySchema,
-//   async ({ user_message }) => {
-//     const session = await auth()
-//     if (!user_message || !session?.user?.name)
-//       return { error: 'Something went wrong' }
-//     const newWallEntry = await db
-//       .insert(wallEntries)
-//       .values({
-//         user_message: user_message,
-//         user_name: session.user.name,
-//         user_email: session.user.email,
-//         user_pic: session.user.image,
-//       })
-//       .returning()
-//     revalidatePath('/wall')
-//     if (!newWallEntry) return { error: 'Could not create wall entry.' }
-//     if (newWallEntry[0].id) return { success: 'Wall entry created.' }
-//   }
-// )
+export const saveWallEntry = action(
+  saveWallEntrySchema,
+  async ({ user_message }) => {
+    const supabase = createClient()
+    const { data } = await supabase.auth.getUser()
+    if (!user_message || !data.user?.email)
+      return { error: 'Something went wrong' }
+    // console.log(data.user.user_metadata)
+    const newWallEntry = await db
+      .insert(wallEntries)
+      .values({
+        user_message: user_message,
+        // user_name: session.user.name,
+        // user_email: session.user.email,
+        // user_pic: session.user.image,
+      })
+      .returning()
+    revalidatePath('/wall')
+    if (!newWallEntry) return { error: 'Could not create wall entry.' }
+    if (newWallEntry[0].id) return { success: 'Wall entry created.' }
+  }
+)
 
 export const deleteWallEntry = action(deleteWallEntrySchema, async ({ id }) => {
   try {
@@ -48,21 +50,4 @@ export const fetchWallEntries = async () => {
   })
   revalidatePath('/wall')
   return { success: entries }
-}
-
-export async function signInWithLinkedIn() {
-  const supabase = createClient()
-
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: 'linkedin_oidc',
-    options: {
-      redirectTo: `${window.location.origin}/wall`,
-    },
-  })
-
-  if (error) {
-    return { error: 'Something went wrong.' }
-  }
-
-  revalidatePath('/wall')
 }
