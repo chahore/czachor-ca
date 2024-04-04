@@ -1,4 +1,4 @@
-import { fetchWallEntries } from '@/utils/actions'
+import { fetchWallEntries } from '@/db/actions'
 import { createClient } from '@/utils/supabase/server'
 import Image from 'next/image'
 

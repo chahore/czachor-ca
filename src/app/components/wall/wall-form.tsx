@@ -9,8 +9,8 @@ import {
   FormMessage,
 } from '@/app/components/ui/form'
 import { Input } from '@/app/components/ui/input'
+import { deleteWallEntry, saveWallEntry } from '@/db/actions'
 import { saveWallEntrySchema } from '@/lib/zod-schemas'
-import { deleteWallEntry, saveWallEntry } from '@/utils/actions'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
