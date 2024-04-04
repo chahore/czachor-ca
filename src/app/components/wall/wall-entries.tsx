@@ -19,8 +19,6 @@ export async function WallEntries() {
       session?.user?.email === 'david@czachor.ca'
     )
   }
-  console.log(entries)
-
   return (
     <div className="pt-5">
       {entries?.map((entry) => (

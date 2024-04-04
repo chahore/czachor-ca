@@ -15,9 +15,6 @@ export async function saveWallEntry({
   const { data: session } = await supabase.auth.getUser()
   await supabase.from('wall_entries').insert({
     user_message: user_message,
-    user_email: session.user?.email,
-    user_name: session.user?.user_metadata.name,
-    user_pic: session.user?.user_metadata.picture,
   })
   if (!user_message || !session.user?.email)
     return { error: 'Something went wrong' }
@@ -32,8 +29,10 @@ export async function deleteWallEntry({ id }: { id: number }) {
 
 export async function fetchWallEntries() {
   noStore()
-  return await supabase
+  const result = await supabase
     .from('wall_entries')
-    .select('*')
+    .select('*, users(*)')
     .order('created_at', { ascending: false })
+  console.log(result)
+  return result
 }
