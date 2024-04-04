@@ -3,7 +3,6 @@ import { EntrySkeleton } from '@/app/components/skeletons/entry-skeleton'
 import { WallEntries } from '@/app/components/wall/wall-entries'
 import MessageForm from '@/app/components/wall/wall-form'
 import { wallPageConfig } from '@/site.config'
-import { createClient } from '@/utils/supabase/server'
 import { Metadata } from 'next'
 import { Suspense } from 'react'
 
@@ -28,18 +27,12 @@ export default function Page() {
 }
 
 const WallForm = async () => {
-  const supabase = createClient()
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-
-  return user ? (
-    <>
-      <MessageForm />
-      <SignOut />
-    </>
-  ) : (
+  return (
+    //   <>
+    //     <MessageForm />
+    //     <SignOut />
+    //   </>
+    // ) : (
     <SignIn />
   )
 }
