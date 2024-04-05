@@ -1,5 +1,6 @@
 import { sql } from 'drizzle-orm'
 import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core'
+import { use } from 'react'
 
 export const wallEntries = sqliteTable('wall_entires', {
   id: integer('id').primaryKey({ autoIncrement: true }).notNull(),
@@ -10,4 +11,18 @@ export const wallEntries = sqliteTable('wall_entires', {
   created_at: text('created_at')
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
+})
+
+export const userTable = sqliteTable('user', {
+  id: text('id').notNull().primaryKey(),
+  linkedin_id: integer('linkedin').unique(),
+  username: text('username'),
+})
+
+export const sessionTable = sqliteTable('session', {
+  id: text('id').notNull().primaryKey(),
+  userId: text('user_id')
+    .notNull()
+    .references(() => userTable.id),
+  expiresAt: integer('expires_at').notNull(),
 })
