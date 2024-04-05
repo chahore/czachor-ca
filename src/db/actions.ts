@@ -1,9 +1,8 @@
 'use server'
 
-import { unstable_noStore as noStore } from 'next/cache'
 import { revalidatePath } from 'next/cache'
 
-export async function saveWallEntry() {}
+export async function saveWallEntry({ entry }: { entry: string }) {}
 
 export async function deleteWallEntry() {}
 
