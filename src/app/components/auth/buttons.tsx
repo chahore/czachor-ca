@@ -1,33 +1,52 @@
-'use client'
-
-import { useRouter } from 'next/navigation'
+import { lucia, validateRequest } from '@/lib/auth'
+import { revalidatePath } from 'next/cache'
+import { cookies } from 'next/headers'
+import Link from 'next/link'
 
 import { Icons } from '../global/icons'
 import { Button, buttonVariants } from '../ui/button'
 
 export function SignOut() {
-  const router = useRouter()
   return (
-    <Button
-      onClick={() => {}}
-      className={buttonVariants({
-        variant: 'ghost',
-        size: 'sm',
-      })}
-    >
-      Sign Out
-    </Button>
+    <form action={logout}>
+      <Button
+        variant="ghost"
+        size="sm"
+      >
+        Sign Out
+      </Button>
+    </form>
   )
+}
+
+async function logout() {
+  'use server'
+  const { session } = await validateRequest()
+  if (!session) {
+    return {
+      error: 'Unauthorized',
+    }
+  }
+
+  await lucia.invalidateSession(session.id)
+
+  const sessionCookie = lucia.createBlankSessionCookie()
+  cookies().set(
+    sessionCookie.name,
+    sessionCookie.value,
+    sessionCookie.attributes
+  )
+  revalidatePath('/wall')
 }
 
 export function SignIn() {
   return (
-    <button
+    <Link
       className={buttonVariants({ variant: 'outline' })}
-      onClick={() => {}}
+      href="/auth"
     >
       <Icons.linkedin className="h-4 w-4" />
-      <div className="ml-2">Sign in with LinkedIn</div>
-    </button>
+      <span className="ml-2">Sign in with LinkedIn</span>
+    </Link>
   )
 }

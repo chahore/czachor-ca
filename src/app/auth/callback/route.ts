@@ -1,7 +1,8 @@
 import { db } from '@/db'
+import {  SelectUser, userTable } from '@/db/schema'
 import { linkedin, lucia } from '@/lib/auth'
-import type { DatabaseUser } from '@/lib/db'
 import { OAuth2RequestError } from 'arctic'
+import { eq } from 'drizzle-orm'
 import { generateId } from 'lucia'
 import { cookies } from 'next/headers'
 
@@ -18,15 +19,13 @@ export async function GET(request: Request): Promise<Response> {
 
   try {
     const tokens = await linkedin.validateAuthorizationCode(code)
-    const linkedinUserResponse = await fetch('https://api.linkedin.com/user', {
+    const linkedinUserResponse = await fetch('https://api.linkedin.com/v2/userinfo', {
       headers: {
         Authorization: `Bearer ${tokens.accessToken}`,
       },
     })
     const linkedinUser: LinkedInUser = await linkedinUserResponse.json()
-    const existingUser = db
-      .prepare('SELECT * FROM user WHERE linkedin_id = ?')
-      .get(linkedinUser.id) as DatabaseUser | undefined
+    const existingUser = await db.select().from(userTable).where(eq(userTable.linkedin_id, linkedinUser.id)).get() as SelectUser | undefined;
 
     if (existingUser) {
       const session = await lucia.createSession(existingUser.id, {})
@@ -45,9 +44,12 @@ export async function GET(request: Request): Promise<Response> {
     }
 
     const userId = generateId(15)
-    db.prepare(
-      'INSERT INTO user (id, linkedin_id, username) VALUES (?, ?, ?)'
-    ).run(userId, linkedinUser.id, linkedinUser.login)
+    await db.insert(userTable).values({
+      id: userId,
+      linkedin_id: linkedinUser.id,
+      user_name: linkedinUser.login
+    })
+    .returning()
     const session = await lucia.createSession(userId, {})
     const sessionCookie = lucia.createSessionCookie(session.id)
     cookies().set(

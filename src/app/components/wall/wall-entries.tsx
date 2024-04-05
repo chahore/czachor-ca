@@ -1,5 +1,4 @@
 import { fetchWallEntries } from '@/db/actions'
-import { createClient } from '@/utils/supabase/server'
 import Image from 'next/image'
 
 import { DeleteEntry } from './wall-form'

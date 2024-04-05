@@ -14,8 +14,7 @@ export const wallEntries = sqliteTable('wall_entires', {
 
 export const userTable = sqliteTable('user', {
   id: text('id').notNull().primaryKey(),
-  linkedin_id: integer('linkedin').unique(),
-  username: text('username'),
+  linkedin_id: text('linkedin').unique(),
   user_name: text('user_name'),
   user_email: text('user_email'),
   user_pic: text('user_picture'),
@@ -29,9 +28,9 @@ export const sessionTable = sqliteTable('session', {
   expiresAt: integer('expires_at').notNull(),
 })
 
-export type InsertWallEntry = typeof wallEntries.$inferInsert
-export type InsertUser = typeof userTable.$inferInsert
-export type InsertSession = typeof sessionTable.$inferInsert
+export type NewWallEntry = typeof wallEntries.$inferInsert
+export type NewUser = typeof userTable.$inferInsert
+export type NewSession = typeof sessionTable.$inferInsert
 
 export type SelectWallEntry = typeof wallEntries.$inferSelect
 export type SelectUser = typeof userTable.$inferSelect

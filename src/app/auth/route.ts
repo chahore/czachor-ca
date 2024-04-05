@@ -4,10 +4,12 @@ import { cookies } from 'next/headers'
 
 export async function GET(): Promise<Response> {
   const state = generateState()
-  const url = await linkedin.createAuthorizationURL(state)
+  const url = await linkedin.createAuthorizationURL(state, {
+    scopes: ['profile', 'email'],
+  })
 
   cookies().set('linkedin_oauth_state', state, {
-    path: '/',
+    path: '/wall',
     secure: process.env.NODE_ENV === 'production',
     httpOnly: true,
     maxAge: 60 * 10,
