@@ -1,18 +1,21 @@
 import { fetchWallEntries } from '@/db/actions'
+import { validateRequest } from '@/lib/auth'
 import Image from 'next/image'
 
 import { DeleteEntry } from './wall-form'
 
 export async function WallEntries() {
   const entries = await fetchWallEntries()
+  const data = await validateRequest()
 
   if (entries === null) {
     return null
   }
+  console.log(data)
 
   // const isUserAuthorizedToDelete = (entry: (typeof entries)[0]) => {
   //   return (
-  //     session?.user?.email === entry.user_email ||
+  //     session?.user?.email === entry. ||
   //     session?.user?.email === 'david@czachor.ca'
   //   )
   // }

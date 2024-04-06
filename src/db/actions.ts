@@ -1,7 +1,8 @@
 'use server'
 
 import { db } from '@/db'
-import { desc, eq } from 'drizzle-orm'
+import { validateRequest } from '@/lib/auth'
+import { and, desc, eq } from 'drizzle-orm'
 import { revalidatePath } from 'next/cache'
 import { unstable_noStore as noStore } from 'next/cache'
 
@@ -11,9 +12,32 @@ export async function saveWallEntry({
   user_message,
 }: {
   user_message: string
-}) {}
+}) {
+  const { session } = await validateRequest()
+  if (!session) {
+    throw new Error('Unauthorized')
+  }
 
-export async function deleteWallEntry({ id }: { id: number }) {}
+  await db.insert(wallEntries).values({
+    user_message,
+    user_id: session.userId,
+  })
+
+  revalidatePath('/wall')
+}
+
+export async function deleteWallEntry({ id }: { id: number }) {
+  const { session } = await validateRequest()
+  if (!session) {
+    throw new Error('Unauthorized')
+  }
+
+  await db
+    .delete(wallEntries)
+    .where(and(eq(wallEntries.id, id), eq(wallEntries.user_id, session.userId)))
+
+  revalidatePath('/wall')
+}
 
 export async function fetchWallEntries() {
   noStore()

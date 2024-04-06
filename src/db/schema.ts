@@ -26,6 +26,7 @@ export const sessionTable = sqliteTable('session', {
     .notNull()
     .references(() => userTable.id),
   expiresAt: integer('expires_at').notNull(),
+  email: text('email'),
 })
 
 export type NewWallEntry = typeof wallEntries.$inferInsert

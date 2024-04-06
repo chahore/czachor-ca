@@ -46,7 +46,9 @@ export async function GET(request: Request): Promise<Response> {
         .where(eq(userTable.id, existingUser.id))
         .run()
 
-      const session = await lucia.createSession(existingUser.id, {})
+      const session = await lucia.createSession(existingUser.id, {
+        email: linkedinUser.email,
+      })
       const sessionCookie = lucia.createSessionCookie(session.id)
       cookies().set(
         sessionCookie.name,
@@ -63,7 +65,7 @@ export async function GET(request: Request): Promise<Response> {
 
     const userId = generateId(15)
 
-    const newUser = await db
+    await db
       .insert(userTable)
       .values({
         id: userId,
@@ -73,8 +75,9 @@ export async function GET(request: Request): Promise<Response> {
         user_pic: linkedinUser.picture,
       })
       .returning()
-    console.log('newUser', newUser)
-    const session = await lucia.createSession(userId, {})
+    const session = await lucia.createSession(userId, {
+      email: linkedinUser.email,
+    })
     const sessionCookie = lucia.createSessionCookie(session.id)
     cookies().set(
       sessionCookie.name,

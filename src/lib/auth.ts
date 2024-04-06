@@ -24,7 +24,12 @@ export const lucia = new Lucia(adapter, {
     return {
       // attributes has the type of DatabaseUserAttributes
       linkedinId: attributes.linkedin_id,
-      username: attributes.username,
+    }
+  },
+  getSessionAttributes: (attributes) => {
+    return {
+      // attributes has the type of DatabaseSessionAttributes
+      email: attributes.email,
     }
   },
 })
@@ -33,6 +38,7 @@ declare module 'lucia' {
   interface Register {
     Lucia: typeof lucia
     DatabaseUserAttributes: DatabaseUserAttributes
+    DatabaseSessionAttributes: DatabaseSessionAttributes
   }
 }
 
@@ -74,7 +80,9 @@ export const validateRequest = cache(
 
 interface DatabaseUserAttributes {
   linkedin_id: number
-  username: string
+}
+interface DatabaseSessionAttributes {
+  email: string
 }
 
 export const linkedin = new LinkedIn(
