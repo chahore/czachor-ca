@@ -14,7 +14,7 @@ export const wallEntries = sqliteTable('wall_entires', {
 
 export const userTable = sqliteTable('user', {
   id: text('id').notNull().primaryKey(),
-  linkedin_id: text('linkedin').unique(),
+  linkedin_id: integer('linkedin').unique().notNull(),
   user_name: text('user_name'),
   user_email: text('user_email'),
   user_pic: text('user_picture'),

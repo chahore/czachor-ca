@@ -9,7 +9,7 @@ export async function GET(): Promise<Response> {
   })
 
   cookies().set('linkedin_oauth_state', state, {
-    path: '/wall',
+    path: '/',
     secure: process.env.NODE_ENV === 'production',
     httpOnly: true,
     maxAge: 60 * 10,
