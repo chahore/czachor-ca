@@ -47,6 +47,7 @@ export async function fetchWallEntries() {
       user_message: wallEntries.user_message,
       user_name: userTable.user_name,
       user_pic: userTable.user_pic,
+      user_email: userTable.user_email,
     })
     .from(wallEntries)
     .leftJoin(userTable, eq(wallEntries.user_id, userTable.id))

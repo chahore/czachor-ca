@@ -10,7 +10,7 @@ import {
 } from '@/app/components/ui/form'
 import { Input } from '@/app/components/ui/input'
 import { deleteWallEntry, saveWallEntry } from '@/db/actions'
-import { saveWallEntrySchema } from '@/lib/zod-schemas'
+import { saveWallEntrySchema } from '@/lib/schemas'
 import { valibotResolver } from '@hookform/resolvers/valibot'
 import { useForm } from 'react-hook-form'
 import { Input as Infer } from 'valibot'
