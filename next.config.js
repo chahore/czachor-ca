@@ -22,15 +22,20 @@ const nextConfig = {
   },
 }
 
+const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
+
 const ContentSecurityPolicy = `
-    default-src 'self' vercel.live;
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' cdn.vercel-insights.com vercel.live va.vercel-scripts.com;
-    style-src 'self' 'unsafe-inline';
-    img-src * blob: data:;
-    media-src 'none';
-    connect-src *;
-    font-src 'self' data:;
-    frame-src 'self' *.codesandbox.io vercel.live;
+    default-src 'none';
+    script-src 'self' 'nonce-${nonce}' 'unsafe-eval' 'unsafe-inline' cdn.vercel-insights.com vercel.live va.vercel-scripts.com www.linkedin.com;
+    style-src 'self' 'nonce-${nonce}' 'unsafe-inline';
+    img-src 'self' blob: data:;
+    connect-src * www.linkedin.com;
+    font-src 'self';
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'none';
+    upgrade-insecure-requests;
 `
 
 const securityHeaders = [
@@ -61,6 +66,10 @@ const securityHeaders = [
   {
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=()',
+  },
+  {
+    key: 'X-Nonce',
+    value: nonce,
   },
 ]
 
