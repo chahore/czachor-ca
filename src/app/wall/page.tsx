@@ -16,9 +16,7 @@ export default function Page() {
   return (
     <section>
       <h1 className="mb-4">Write on the wall.</h1>
-      <Suspense>
         <WallForm />
-      </Suspense>
 
       <Suspense fallback={<EntrySkeleton />}>
         <WallEntries />

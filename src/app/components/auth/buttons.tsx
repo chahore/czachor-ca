@@ -1,7 +1,6 @@
 import { lucia, validateRequest } from '@/lib/auth'
 import { revalidatePath } from 'next/cache'
 import { cookies } from 'next/headers'
-import Link from 'next/link'
 
 import { Icons } from '../global/icons'
 import { Button, buttonVariants } from '../ui/button'
@@ -41,12 +40,12 @@ async function logout() {
 
 export function SignIn() {
   return (
-    <Link
+    <a
       className={buttonVariants({ variant: 'outline' })}
       href="/auth"
     >
       <Icons.linkedin className="h-4 w-4" />
       <span className="ml-2">Sign in with LinkedIn</span>
-    </Link>
+    </a>
   )
 }
