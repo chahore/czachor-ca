@@ -11,21 +11,21 @@ import {
 import { Input } from '@/app/components/ui/input'
 import { deleteWallEntry, saveWallEntry } from '@/db/actions'
 import { saveWallEntrySchema } from '@/lib/zod-schemas'
-import { zodResolver } from '@hookform/resolvers/zod'
+import { valibotResolver } from '@hookform/resolvers/valibot'
 import { useForm } from 'react-hook-form'
-import { z } from 'zod'
+import { Input as Infer } from 'valibot'
 
 import { buttonVariants } from '../ui/button'
 
 export default function WallForm() {
-  const form = useForm<z.infer<typeof saveWallEntrySchema>>({
-    resolver: zodResolver(saveWallEntrySchema),
+  const form = useForm<Infer<typeof saveWallEntrySchema>>({
+    resolver: valibotResolver(saveWallEntrySchema),
     defaultValues: {
       user_message: '',
     },
   })
 
-  function onSubmit(entry: z.infer<typeof saveWallEntrySchema>) {
+  function onSubmit(entry: Infer<typeof saveWallEntrySchema>) {
     saveWallEntry(entry).then(() => form.reset())
   }
 

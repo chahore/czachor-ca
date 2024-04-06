@@ -1,10 +1,18 @@
 'use server'
 
+import { db } from '@/db'
+import { desc, eq } from 'drizzle-orm'
 import { revalidatePath } from 'next/cache'
 
-export async function saveWallEntry({ entry }: { entry: string }) {}
+import { userTable, wallEntries } from './schema'
 
-export async function deleteWallEntry() {}
+export async function saveWallEntry({
+  user_message,
+}: {
+  user_message: string
+}) {}
+
+export async function deleteWallEntry({ id }: { id: number }) {}
 
 // export async function saveWallEntry({
 //   user_message,
@@ -35,3 +43,15 @@ export async function deleteWallEntry() {}
 //   console.log(result)
 //   return result
 // }
+
+export async function fetchWallEntries() {
+  return await db
+    .select({
+      id: wallEntries.id,
+      user_message: wallEntries.user_message,
+      user_name: userTable.user_name,
+      user_pic: userTable.user_pic,
+    })
+    .from(wallEntries)
+    .leftJoin(userTable, eq(wallEntries.user_id, userTable.id))
+}

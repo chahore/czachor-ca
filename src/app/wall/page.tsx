@@ -20,9 +20,9 @@ export default function Page() {
         <WallForm />
       </Suspense>
 
-      {/* <Suspense fallback={<EntrySkeleton />}>
+      <Suspense fallback={<EntrySkeleton />}>
         <WallEntries />
-      </Suspense> */}
+      </Suspense>
     </section>
   )
 }
