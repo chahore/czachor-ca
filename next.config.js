@@ -28,7 +28,7 @@ const ContentSecurityPolicy = `
   style-src 'self' 'unsafe-inline';
   img-src 'self' blob: data:;
   connect-src * www.linkedin.com;
-  font-src 'self';
+  font-src 'self' data: fonts.gstatic.com;
   object-src 'none';
   base-uri 'self';
   form-action 'self';
