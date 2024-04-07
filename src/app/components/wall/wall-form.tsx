@@ -9,7 +9,7 @@ import {
   FormMessage,
 } from '@/app/components/ui/form'
 import { Input } from '@/app/components/ui/input'
-import { deleteWallEntry, saveWallEntry } from '@/db/actions'
+import { saveWallEntry } from '@/db/actions'
 import { saveWallEntrySchema } from '@/lib/schemas'
 import { valibotResolver } from '@hookform/resolvers/valibot'
 import { useForm } from 'react-hook-form'
@@ -61,19 +61,5 @@ export default function WallForm() {
         </Button>
       </form>
     </Form>
-  )
-}
-
-export function DeleteEntry({ id }: { id: number }) {
-  return (
-    <Button
-      className={buttonVariants({
-        variant: 'destructive',
-        size: 'sm',
-      })}
-      onClick={() => deleteWallEntry({ id })}
-    >
-      Delete
-    </Button>
   )
 }

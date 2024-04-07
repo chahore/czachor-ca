@@ -1,38 +1,17 @@
-'use client'
-
 import { getWallEntries } from '@/db/actions'
-import { WallEntry } from '@/lib/types'
 import Image from 'next/image'
-import useSWR from 'swr'
 
-import { useSession } from '../auth/session-provider'
-import { EntrySkeleton } from '../skeletons/entry-skeleton'
-import { DeleteEntry } from './wall-form'
+export async function WallEntries() {
+  const entries = await getWallEntries()
 
-export function WallEntries() {
-  const { session } = useSession()
-  const isUserAuthorizedToDelete = (entry: WallEntry) => {
-    return (
-      session?.email === entry.user_email ||
-      session?.email === 'david@czachor.ca'
-    )
-  }
-
-  const { data: entries, isLoading } = useSWR('wall-entries', getWallEntries)
-
-  if (isLoading) {
-    return <EntrySkeleton />
-  }
   return (
     <div className="pt-5">
       {entries?.map((entry) => {
-        const isAuthorized = isUserAuthorizedToDelete(entry)
         return (
           <article
             key={entry.id}
             className="mb-2 space-x-1.5 text-sm "
           >
-            {isAuthorized && <DeleteEntry id={entry.id} />}
             <span className="min-w-fit pr-1.5 text-muted-foreground">
               {entry.user_pic ? (
                 <Image
