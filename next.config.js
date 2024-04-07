@@ -9,9 +9,6 @@ const nextConfig = {
       },
     ],
   },
-  experimental: {
-    ppr: true,
-  },
   headers() {
     return [
       {

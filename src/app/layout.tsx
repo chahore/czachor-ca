@@ -1,6 +1,8 @@
+import { SessionProvider } from '@/app/components/auth/session-provider'
 import SiteFooter from '@/app/components/global/site-footer'
 import SiteHeader from '@/app/components/global/site-header'
 import '@/app/globals.css'
+import { validateRequest } from '@/lib/auth'
 import { fontSerif } from '@/lib/fonts'
 import { cn } from '@/lib/utils'
 import { siteConfig } from '@/site.config'
@@ -18,11 +20,12 @@ export const metadata: Metadata = {
   description: siteConfig.description,
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const session = await validateRequest()
   return (
     <html lang="en">
       <body
@@ -33,11 +36,13 @@ export default function RootLayout({
           GeistMono.variable
         )}
       >
-        <Analytics />
-        <SpeedInsights />
-        <SiteHeader />
-        {children}
-        <SiteFooter />
+        <SessionProvider value={session}>
+          <Analytics />
+          <SpeedInsights />
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+        </SessionProvider>
       </body>
     </html>
   )
