@@ -1,12 +1,11 @@
-import { SignIn, SignOut } from '@/app/components/auth/buttons'
-import { WallEntries } from '@/app/components/wall/wall-entries'
-import MessageForm from '@/app/components/wall/wall-form'
+import { SignIn, SignOut } from '@/components/auth/buttons'
+import { EntrySkeleton } from '@/components/skeletons/entry-skeleton'
+import { WallEntries } from '@/components/wall/wall-entries'
+import MessageForm from '@/components/wall/wall-form'
 import { validateRequest } from '@/lib/auth'
 import { wallPageConfig } from '@/site.config'
 import { Metadata } from 'next'
 import { Suspense } from 'react'
-
-import { EntrySkeleton } from '../components/skeletons/entry-skeleton'
 
 export const metadata: Metadata = {
   title: wallPageConfig.title,

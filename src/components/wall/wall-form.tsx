@@ -1,14 +1,14 @@
 'use client'
 
-import { Button } from '@/app/components/ui/button'
+import { Button } from '@/components/ui/button'
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-} from '@/app/components/ui/form'
-import { Input } from '@/app/components/ui/input'
+} from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
 import { saveWallEntry } from '@/db/actions'
 import { saveWallEntrySchema } from '@/lib/schemas'
 import { valibotResolver } from '@hookform/resolvers/valibot'

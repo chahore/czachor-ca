@@ -1,6 +1,6 @@
-import SiteFooter from '@/app/components/global/site-footer'
-import SiteHeader from '@/app/components/global/site-header'
 import '@/app/globals.css'
+import SiteFooter from '@/components/global/site-footer'
+import SiteHeader from '@/components/global/site-header'
 import { fontSerif } from '@/lib/fonts'
 import { cn } from '@/lib/utils'
 import { siteConfig } from '@/site.config'

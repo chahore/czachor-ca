@@ -1,6 +1,6 @@
-import { Icons } from '@/app/components/global/icons'
-import ListView from '@/app/components/pages/list-view'
-import Badge from '@/app/components/ui/badge'
+import { Icons } from '@/components/global/icons'
+import ListView from '@/components/pages/list-view'
+import Badge from '@/components/ui/badge'
 import { projects, workPageConfig } from '@/site.config'
 import { Metadata } from 'next'
 
