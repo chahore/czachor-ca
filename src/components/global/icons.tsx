@@ -5,7 +5,6 @@ export type Icon = LucideIcon
 export const Icons = {
   email: Mail,
   arrow: ArrowUpRight,
-  // linkedin: Linkedin,
   linkedin: (props: LucideProps) => (
     <svg
       viewBox="0 0 15 15"
