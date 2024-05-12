@@ -8,6 +8,7 @@ dotenv.config({
 export default {
   schema: './src/db/schema.ts',
   out: './src/db/migrations',
+  dialect: 'sqlite',
   driver: 'turso',
   dbCredentials: {
     url: process.env.TURSO_CONNECTION_URL!,

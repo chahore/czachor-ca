@@ -32,8 +32,8 @@ export async function saveWallEntry({
 }
 
 export async function getWallEntries() {
+  noStore()
   try {
-    noStore()
     return await db
       .select({
         id: wallEntries.id,
