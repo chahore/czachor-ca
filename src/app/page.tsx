@@ -26,5 +26,5 @@ export default function Page() {
         with creativity.
       </p>
     </main>
-  )
+  );
 }

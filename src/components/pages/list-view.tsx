@@ -1,28 +1,24 @@
-import Link from 'next/link'
-
-import { Icons } from '../global/icons'
-import { buttonVariants } from '../ui/button'
+import Link from 'next/link';
+import { Icons } from '../global/icons';
+import { buttonVariants } from '../ui/button';
 
 export type ListViewProps = {
-  title: string
-  description: string
-  href: string
-}[]
+  title: string;
+  description: string;
+  href: string;
+}[];
 
 export default async function ListView({
   listItems,
   external = false,
 }: {
-  listItems: ListViewProps
-  external?: boolean
+  listItems: ListViewProps;
+  external?: boolean;
 }) {
   return (
     <>
       {listItems.map(({ title, description, href }) => (
-        <article
-          key={title}
-          className="mb-1"
-        >
+        <article key={title} className="mb-1">
           <Link
             href={href}
             target={external ? '_blank' : '_self'}
@@ -48,5 +44,5 @@ export default async function ListView({
         </article>
       ))}
     </>
-  )
+  );
 }

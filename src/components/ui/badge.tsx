@@ -1,7 +1,7 @@
-import { buttonVariants } from './button'
+import { buttonVariants } from './button';
 
 export default function Badge(
-  props: React.AnchorHTMLAttributes<HTMLAnchorElement>
+  props: React.AnchorHTMLAttributes<HTMLAnchorElement>,
 ) {
   return (
     <a
@@ -12,5 +12,5 @@ export default function Badge(
         size: 'link',
       })}
     />
-  )
+  );
 }

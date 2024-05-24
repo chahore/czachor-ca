@@ -1,5 +1,5 @@
-import { sql } from 'drizzle-orm'
-import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core'
+import { sql } from 'drizzle-orm';
+import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
 export const wallEntries = sqliteTable('wall_entires', {
   id: integer('id').primaryKey({ autoIncrement: true }).notNull(),
@@ -10,7 +10,7 @@ export const wallEntries = sqliteTable('wall_entires', {
   created_at: text('created_at')
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
-})
+});
 
 export const userTable = sqliteTable('user', {
   id: text('id').notNull().primaryKey(),
@@ -18,7 +18,7 @@ export const userTable = sqliteTable('user', {
   user_name: text('user_name'),
   user_email: text('user_email'),
   user_pic: text('user_picture'),
-})
+});
 
 export const sessionTable = sqliteTable('session', {
   id: text('id').notNull().primaryKey(),
@@ -27,12 +27,12 @@ export const sessionTable = sqliteTable('session', {
     .references(() => userTable.id),
   expiresAt: integer('expires_at').notNull(),
   email: text('email'),
-})
+});
 
-export type NewWallEntry = typeof wallEntries.$inferInsert
-export type NewUser = typeof userTable.$inferInsert
-export type NewSession = typeof sessionTable.$inferInsert
+export type NewWallEntry = typeof wallEntries.$inferInsert;
+export type NewUser = typeof userTable.$inferInsert;
+export type NewSession = typeof sessionTable.$inferInsert;
 
-export type SelectWallEntry = typeof wallEntries.$inferSelect
-export type SelectUser = typeof userTable.$inferSelect
-export type SelectSession = typeof sessionTable.$inferSelect
+export type SelectWallEntry = typeof wallEntries.$inferSelect;
+export type SelectUser = typeof userTable.$inferSelect;
+export type SelectSession = typeof sessionTable.$inferSelect;

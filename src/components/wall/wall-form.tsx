@@ -1,21 +1,20 @@
-'use client'
+'use client';
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { saveWallEntry } from '@/db/actions'
-import { saveWallEntrySchema } from '@/lib/schemas'
-import { valibotResolver } from '@hookform/resolvers/valibot'
-import { useForm } from 'react-hook-form'
-import { Input as Infer } from 'valibot'
-
-import { buttonVariants } from '../ui/button'
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { saveWallEntry } from '@/db/actions';
+import { saveWallEntrySchema } from '@/lib/schemas';
+import { valibotResolver } from '@hookform/resolvers/valibot';
+import { useForm } from 'react-hook-form';
+import { type Input as Infer } from 'valibot';
+import { buttonVariants } from '../ui/button';
 
 export default function WallForm() {
   const form = useForm<Infer<typeof saveWallEntrySchema>>({
@@ -23,10 +22,10 @@ export default function WallForm() {
     defaultValues: {
       user_message: '',
     },
-  })
+  });
 
   function onSubmit(entry: Infer<typeof saveWallEntrySchema>) {
-    saveWallEntry(entry).then(() => form.reset())
+    void saveWallEntry(entry).then(() => form.reset());
   }
 
   return (
@@ -41,10 +40,7 @@ export default function WallForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input
-                  placeholder="Your message..."
-                  {...field}
-                />
+                <Input placeholder="Your message..." {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -61,5 +57,5 @@ export default function WallForm() {
         </Button>
       </form>
     </Form>
-  )
+  );
 }

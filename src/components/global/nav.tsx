@@ -1,15 +1,15 @@
-'use client'
+'use client';
 
-import { cn } from '@/lib/utils'
-import { siteConfig } from '@/site.config'
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { cn } from '@/lib/utils';
+import { siteConfig } from '@/site.config';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Nav() {
-  let pathname = usePathname()
+  let pathname = usePathname();
   if (pathname.includes('/blog/')) {
-    pathname = '/blog'
+    pathname = '/blog';
   }
   return (
     <>
@@ -25,7 +25,7 @@ export default function Nav() {
                     'transition-colors hover:text-foreground/80',
                     pathname === item.href
                       ? 'text-foreground'
-                      : 'text-foreground/60'
+                      : 'text-foreground/60',
                   )}
                 >
                   <span className="relative py-1.5">
@@ -43,10 +43,10 @@ export default function Nav() {
                     ) : null}
                   </span>
                 </Link>
-              )
+              ),
           )}
         </nav>
       ) : null}
     </>
-  )
+  );
 }

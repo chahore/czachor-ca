@@ -1,17 +1,14 @@
-import { getWallEntries } from '@/db/actions'
-import Image from 'next/image'
+import { getWallEntries } from '@/db/actions';
+import Image from 'next/image';
 
 export async function WallEntries() {
-  const entries = await getWallEntries()
+  const entries = await getWallEntries();
 
   return (
     <div className="pt-5">
       {entries?.map((entry) => {
         return (
-          <article
-            key={entry.id}
-            className="mb-2 space-x-1.5 text-sm "
-          >
+          <article key={entry.id} className="mb-2 space-x-1.5 text-sm ">
             <span className="min-w-fit pr-1.5 text-muted-foreground">
               {entry.user_pic ? (
                 <Image
@@ -26,8 +23,8 @@ export async function WallEntries() {
             </span>
             {entry.user_message}
           </article>
-        )
+        );
       })}
     </div>
-  )
+  );
 }

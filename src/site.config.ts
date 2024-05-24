@@ -1,5 +1,5 @@
-export type SiteConfig = typeof siteConfig
-export type Projects = typeof projects
+export type SiteConfig = typeof siteConfig;
+export type Projects = typeof projects;
 
 export const siteConfig = {
   title: 'David Czachor',
@@ -32,7 +32,7 @@ export const siteConfig = {
       href: 'https://www.linkedin.com/in/davidczachor/',
     },
   ],
-}
+};
 
 export const projects = [
   {
@@ -40,14 +40,14 @@ export const projects = [
     description: 'A simple pokedex built with React',
     href: 'https://pokedex.czachor.dev',
   },
-]
+];
 
 export const workPageConfig = {
   title: 'Work',
   description: 'A showcase of work done by David Czachor',
-}
+};
 
 export const wallPageConfig = {
   title: 'Wall',
   description: 'Write on the wall.',
-}
+};
