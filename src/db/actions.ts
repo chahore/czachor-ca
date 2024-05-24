@@ -3,7 +3,7 @@
 import { db } from '@/db';
 import { validateRequest } from '@/lib/auth';
 import { desc, eq } from 'drizzle-orm';
-import { unstable_noStore as noStore, revalidatePath } from 'next/cache';
+import { revalidatePath } from 'next/cache';
 import { userTable, wallEntries } from './schema';
 
 export async function saveWallEntry({
@@ -30,7 +30,6 @@ export async function saveWallEntry({
 }
 
 export async function getWallEntries() {
-  noStore();
   try {
     return await db
       .select({
