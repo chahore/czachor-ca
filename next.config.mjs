@@ -3,7 +3,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-
+  experimental: {
+    reactCompiler: true,
+    ppr: 'incremental',
+  },
   images: {
     remotePatterns: [
       {
