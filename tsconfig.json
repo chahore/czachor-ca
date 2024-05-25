@@ -30,14 +30,14 @@
     }
   },
   "include": [
-    ".eslintrc.js",
+    "eslint.config.mjs",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "**/*.cjs",
     "**/*.js",
     ".next/types/**/*.ts",
-    "prettier.config.mjs"
+    "prettier.config.js"
   ],
   "exclude": ["node_modules"]
 }
