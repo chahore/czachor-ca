@@ -37,7 +37,8 @@
     "**/*.cjs",
     "**/*.js",
     ".next/types/**/*.ts",
-    "prettier.config.js"
+    "prettier.config.js",
+    "postcss.config.mjs"
   ],
   "exclude": ["node_modules"]
 }
