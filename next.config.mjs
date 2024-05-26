@@ -4,7 +4,7 @@
 const nextConfig = {
   experimental: {
     reactCompiler: true,
-    // ppr: 'incremental',
+    ppr: true,
   },
   images: {
     remotePatterns: [
