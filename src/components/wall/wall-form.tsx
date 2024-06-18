@@ -13,18 +13,18 @@ import { saveWallEntry } from '@/db/actions';
 import { saveWallEntrySchema } from '@/lib/schemas';
 import { valibotResolver } from '@hookform/resolvers/valibot';
 import { useForm } from 'react-hook-form';
-import { type Input as Infer } from 'valibot';
+import { type InferInput } from 'valibot';
 import { buttonVariants } from '../ui/button';
 
 export default function WallForm() {
-  const form = useForm<Infer<typeof saveWallEntrySchema>>({
+  const form = useForm<InferInput<typeof saveWallEntrySchema>>({
     resolver: valibotResolver(saveWallEntrySchema),
     defaultValues: {
       user_message: '',
     },
   });
 
-  function onSubmit(entry: Infer<typeof saveWallEntrySchema>) {
+  function onSubmit(entry: InferInput<typeof saveWallEntrySchema>) {
     void saveWallEntry(entry).then(() => form.reset());
   }
 

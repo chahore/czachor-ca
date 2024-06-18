@@ -2,6 +2,8 @@ import { linkedin } from '@/lib/auth';
 import { generateState } from 'arctic';
 import { cookies } from 'next/headers';
 
+export const runtime = 'edge';
+
 export async function GET(): Promise<Response> {
   const state = generateState();
   const url = await linkedin.createAuthorizationURL(state, {

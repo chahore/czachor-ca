@@ -1,9 +1,10 @@
 'use server';
 
 import { db } from '@/db';
-import { validateRequest } from '@/lib/auth';
+import { lucia, validateRequest } from '@/lib/auth';
 import { desc, eq } from 'drizzle-orm';
-import { revalidatePath } from 'next/cache';
+import { revalidatePath, revalidateTag } from 'next/cache';
+import { cookies } from 'next/headers';
 import { userTable, wallEntries } from './schema';
 
 export async function saveWallEntry({
@@ -23,7 +24,7 @@ export async function saveWallEntry({
       user_id: session.userId,
     });
 
-    revalidatePath('/wall');
+    revalidateTag('wall-entries');
   } catch (error) {
     throw new Error('Failed to save wall entry. Please try again later.');
   }
@@ -44,4 +45,23 @@ export async function getWallEntries() {
   } catch (error) {
     throw new Error('Failed to fetch wall entries. Please try again later.');
   }
+}
+
+export async function logout() {
+  const { session } = await validateRequest();
+  if (!session) {
+    return {
+      error: 'Unauthorized',
+    };
+  }
+
+  await lucia.invalidateSession(session.id);
+
+  const sessionCookie = lucia.createBlankSessionCookie();
+  cookies().set(
+    sessionCookie.name,
+    sessionCookie.value,
+    sessionCookie.attributes,
+  );
+  revalidatePath('/wall');
 }

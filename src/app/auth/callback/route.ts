@@ -6,6 +6,8 @@ import { eq } from 'drizzle-orm';
 import { generateId } from 'lucia';
 import { cookies } from 'next/headers';
 
+export const runtime = 'edge';
+
 export async function GET(request: Request): Promise<Response> {
   const url = new URL(request.url);
   const code = url.searchParams.get('code');
