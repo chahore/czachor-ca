@@ -3,7 +3,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    reactCompiler: true,
+    // reactCompiler: true,
     ppr: 'incremental',
   },
   images: {
