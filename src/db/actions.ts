@@ -20,6 +20,8 @@ export async function saveWallEntry({
   await db.insert(wallEntries).values({
     user_message,
     user_id: session.user.id,
+    user_name: session.user.name,
+    user_pic: session.user.image,
   });
 
   revalidateTag('wall-entries');
