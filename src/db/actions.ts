@@ -13,8 +13,8 @@ export async function saveWallEntry({
 }) {
   const session = await auth();
 
-  if (!session?.user?.id) {
-    return { error: session ? 'No user id' : 'Unauthorized' };
+  if (!session?.user) {
+    return { error: session ? 'No user' : 'Unauthorized' };
   }
 
   await db.insert(wallEntries).values({
