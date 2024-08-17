@@ -12,11 +12,10 @@ export async function saveWallEntry({
 }: {
   user_message: string;
 }) {
-  try {
     const { session } = await validateRequest();
 
     if (!session) {
-      throw new Error('Unauthorized');
+      return { error: 'Unauthorized' };
     }
 
     await db.insert(wallEntries).values({
@@ -25,13 +24,9 @@ export async function saveWallEntry({
     });
 
     revalidateTag('wall-entries');
-  } catch (error) {
-    throw new Error('Failed to save wall entry. Please try again later.');
-  }
 }
 
 export async function getWallEntries() {
-  try {
     return await db
       .select({
         id: wallEntries.id,
@@ -41,10 +36,7 @@ export async function getWallEntries() {
       })
       .from(wallEntries)
       .leftJoin(userTable, eq(wallEntries.user_id, userTable.id))
-      .orderBy(desc(wallEntries.id));
-  } catch (error) {
-    throw new Error('Failed to fetch wall entries. Please try again later.');
-  }
+      .orderBy(desc(wallEntries.id))
 }
 
 export async function logout() {
