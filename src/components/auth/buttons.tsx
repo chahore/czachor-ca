@@ -1,11 +1,16 @@
-import { logout } from '@/db/actions';
+import { signIn, signOut } from '@/auth';
 import { Icons } from '../global/icons';
-import { Button, buttonVariants } from '../ui/button';
+import { Button } from '../ui/button';
 
 export function SignOut() {
   return (
-    <form action={logout}>
-      <Button variant="ghost" size="sm">
+    <form
+      action={async () => {
+        'use server';
+        await signOut();
+      }}
+    >
+      <Button variant="ghost" size="sm" type="submit">
         Sign Out
       </Button>
     </form>
@@ -14,9 +19,16 @@ export function SignOut() {
 
 export function SignIn() {
   return (
-    <a className={buttonVariants({ variant: 'outline' })} href="/auth">
-      <Icons.linkedin className="h-4 w-4" />
-      <span className="ml-2">Sign in with LinkedIn</span>
-    </a>
+    <form
+      action={async () => {
+        'use server';
+        await signIn('linkedin');
+      }}
+    >
+      <Button variant={'outline'} type="submit">
+        <Icons.linkedin className="mr-2 h-4 w-4" />
+        Sign in with LinkedIn
+      </Button>
+    </form>
   );
 }
