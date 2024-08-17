@@ -21,11 +21,11 @@ export const siteConfig = {
   socials: [
     {
       title: 'email',
-      href: 'mailto:david@czachor.dev',
+      href: 'mailto:david@czachor.ca',
     },
     {
       title: 'github',
-      href: 'https://github.com/davidczachor',
+      href: 'https://github.com/chahore',
     },
     {
       title: 'linkedin',
