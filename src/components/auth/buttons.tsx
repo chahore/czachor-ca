@@ -1,5 +1,5 @@
 import { signIn, signOut } from '@/auth';
-import { Icons } from '../global/icons';
+import { LinkedInIcon } from '../global/icons';
 import { Button } from '../ui/button';
 
 export function SignOut() {
@@ -26,7 +26,7 @@ export function SignIn() {
       }}
     >
       <Button variant={'outline'} type="submit">
-        <Icons.linkedin className="mr-2 h-4 w-4" />
+        <LinkedInIcon className="mr-2 h-4 w-4" />
         Sign in with LinkedIn
       </Button>
     </form>

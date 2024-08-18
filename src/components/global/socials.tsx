@@ -1,15 +1,15 @@
 import { siteConfig } from '@/site.config';
 import Link from 'next/link';
 import { buttonVariants } from '../ui/button';
-import { Icons } from './icons';
+import { EmailIcon, GithubIcon, LinkedInIcon } from './icons';
 
 export default async function Socials() {
   const iconClassName = 'h-4 w-4';
 
   const getSocialIcon: Record<string, JSX.Element> = {
-    linkedin: <Icons.linkedin className={iconClassName} />,
-    github: <Icons.github className={iconClassName} />,
-    email: <Icons.email className={iconClassName} />,
+    linkedin: <LinkedInIcon className={iconClassName} />,
+    github: <GithubIcon className={iconClassName} />,
+    email: <EmailIcon className={iconClassName} />,
   };
   return (
     <div>

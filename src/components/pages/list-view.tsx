@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Icons } from '../global/icons';
+import { ArrowIcon } from '../global/icons';
 import { buttonVariants } from '../ui/button';
 
 export type ListViewProps = {
@@ -35,7 +35,7 @@ export default async function ListView({
             </h2>
           </Link>
           {external && (
-            <Icons.arrow
+            <ArrowIcon
               className="ml-1 inline h-5 w-5 text-muted-foreground"
               aria-hidden={true}
             />
