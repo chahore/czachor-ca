@@ -6,12 +6,9 @@ import { desc } from 'drizzle-orm';
 import { revalidateTag } from 'next/cache';
 import { wallEntries } from './schema';
 
-export async function saveWallEntry({
-  user_message,
-}: {
-  user_message: string;
-}) {
+export async function saveWallEntry(formData: FormData) {
   const session = await auth();
+  const user_message = formData.get('entry') as string;
 
   if (!session?.user) {
     return { error: session ? 'No user' : 'Unauthorized' };
