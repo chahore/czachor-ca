@@ -3,6 +3,8 @@ import { siteConfig } from '@/site.config'
 import '@/styles/styles.css'
 import '@fontsource/geist-mono'
 import Footer from '@/layouts/Footer.astro'
+import Analytics from '@vercel/analytics/astro'
+import SpeedInsights from '@vercel/speed-insights/astro'
 ---
 
 <!doctype html>
@@ -34,5 +36,7 @@ import Footer from '@/layouts/Footer.astro'
 	<body class="antialiased container mx-auto sm:max-w-3xl py-10 flex flex-col justify-between min-h-svh px-4">
 		<slot />
 		<Footer />
+		<Analytics />
+		<SpeedInsights />
 	</body>
 </html>
