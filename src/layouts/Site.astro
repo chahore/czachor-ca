@@ -1,0 +1,38 @@
+---
+import { siteConfig } from '@/site.config'
+import '@/styles/styles.css'
+import '@fontsource/geist-mono'
+import Footer from '@/layouts/Footer.astro'
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/ico" href="/favicon.ico" />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		<title>{siteConfig.title}</title>
+		<meta name="description" content={siteConfig.description} />
+		<meta name="generator" content={Astro.generator} />
+
+		<meta name="robots" content="index, follow" />
+		<meta name="author" content={siteConfig.title} />
+		<meta name="theme-color" content="#191919" />
+		<link rel="canonical" href={Astro.url} />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={siteConfig.title} />
+		<meta property="og:description" content={siteConfig.description} />
+		<meta property="og:url" content={Astro.url} />
+
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content={siteConfig.title} />
+		<meta name="twitter:description" content={siteConfig.description} />
+		<meta name="twitter:url" content={Astro.url} />
+	</head>
+	<body class="antialiased container mx-auto sm:max-w-3xl py-10 flex flex-col justify-between min-h-svh px-4">
+		<slot />
+		<Footer />
+	</body>
+</html>

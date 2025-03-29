@@ -1,0 +1,33 @@
+---
+import { siteConfig } from '@/site.config'
+---
+
+<footer role="contentinfo">
+	<ul class="flex gap-4 justify-center">
+		<li>
+			<a 
+				class="hover:underline text-primary underline-offset-4 focus:underline focus:outline-2 focus:outline-primary focus:outline-offset-1" 
+				href={siteConfig.socials[1].href}
+				aria-label={`Visit ${siteConfig.socials[1].title} profile`}
+				rel="noopener noreferrer"
+			>{siteConfig.socials[1].title}</a>
+		</li>
+		<li aria-hidden="true">/</li>
+		<li>	
+			<a 
+				class="hover:underline text-primary underline-offset-4 focus:underline focus:outline-2 focus:outline-primary focus:outline-offset-1" 
+				href={siteConfig.socials[2].href}
+				aria-label={`Visit ${siteConfig.socials[2].title} profile`}
+				rel="noopener noreferrer"
+			>{siteConfig.socials[2].title}</a>
+		</li>
+		<li aria-hidden="true">/</li>
+		<li>
+			<a 
+				class="hover:underline text-primary underline-offset-4 focus:underline focus:outline-2 focus:outline-primary focus:outline-offset-1" 
+				href={siteConfig.socials[0].href}
+				aria-label={`Contact via ${siteConfig.socials[0].title}`}
+			>{siteConfig.socials[0].title}</a>
+		</li>
+	</ul>
+</footer>

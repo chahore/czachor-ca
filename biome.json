@@ -7,9 +7,7 @@
 	},
 	"files": {
 		"ignoreUnknown": false,
-		"ignore": [
-			"globals.css"
-		]
+		"ignore": ["styles.css"]
 	},
 	"formatter": {
 		"enabled": true
@@ -39,5 +37,18 @@
 			"trailingCommas": "es5",
 			"quoteStyle": "single"
 		}
-	}
+	},
+	"overrides": [
+		{
+			"include": ["*.astro"],
+			"linter": {
+				"rules": {
+					"style": {
+						"useConst": "off",
+						"useImportType": "off"
+					}
+				}
+			}
+		}
+	]
 }
