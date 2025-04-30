@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "npx astro build && npx wrangler pages dev ./dist",
+    "preview": "bunx astro build && bunx wrangler pages dev ./dist",
+    "deploy": "bunx wrangler pages deploy ./dist --project-name=czachor-ca",
     "astro": "astro"
   },
   "dependencies": {
