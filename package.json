@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "bunx astro build && bunx wrangler pages dev ./dist",
-    "deploy": "bunx wrangler pages deploy ./dist --project-name=czachor-ca",
+    "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
@@ -14,14 +13,11 @@
     "@fontsource/geist-mono": "^5.2.5",
     "@tailwindcss/vite": "^4.1.5",
     "astro": "^5.7.10",
-    "tailwindcss": "^4.1.5",
-    "wrangler": "^4.13.2"
+    "tailwindcss": "^4.1.5"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
     "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
     "prettier": "^3.5.3",
-    "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.11"
   }
 }
