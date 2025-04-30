@@ -1,21 +1,22 @@
 {
-	"name": "new",
-	"type": "module",
-	"version": "0.0.1",
-	"scripts": {
-		"dev": "astro dev",
-		"build": "astro build",
-		"preview": "astro preview",
-		"astro": "astro"
-	},
-	"dependencies": {
-		"@astrojs/sitemap": "^3.3.1",
-		"@fontsource/geist-mono": "^5.2.5",
-		"@tailwindcss/vite": "^4.1.5",
-		"astro": "^5.7.10",
-		"tailwindcss": "^4.1.5"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "1.9.4"
-	}
+  "name": "new",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "npx astro build && npx wrangler pages dev ./dist",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.3.1",
+    "@fontsource/geist-mono": "^5.2.5",
+    "@tailwindcss/vite": "^4.1.5",
+    "astro": "^5.7.10",
+    "tailwindcss": "^4.1.5",
+    "wrangler": "^4.13.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4"
+  }
 }
