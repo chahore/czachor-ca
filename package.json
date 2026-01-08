@@ -1,23 +1,35 @@
 {
-  "name": "new",
-  "type": "module",
+  "name": "czachor-ca",
   "version": "0.0.1",
+  "dependencies": {
+    "@astrojs/sitemap": "^3.6.1",
+    "@fontsource/geist-mono": "^5.2.7",
+    "astro": "^5.16.7"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
-  "dependencies": {
-    "@astrojs/sitemap": "^3.3.1",
-    "@fontsource/geist-mono": "^5.2.5",
-    "@tailwindcss/vite": "^4.1.5",
-    "astro": "^5.7.10",
-    "tailwindcss": "^4.1.5"
-  },
+  "type": "module",
   "devDependencies": {
-    "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
-    "prettier": "^3.5.3",
-    "prettier-plugin-tailwindcss": "^0.6.11"
+    "@eslint/js": "^9.39.2",
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
+    "@tailwindcss/vite": "^4.1.18",
+    "@types/bun": "^1.3.5",
+    "eslint": "^9.39.2",
+    "eslint-plugin-astro": "^1.5.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "globals": "^17.0.0",
+    "prettier": "^3.7.4",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^4.1.18",
+    "typescript-eslint": "^8.52.0"
   }
 }

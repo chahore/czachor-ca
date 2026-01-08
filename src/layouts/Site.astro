@@ -1,7 +1,8 @@
 ---
+import '@/styles/styles.css'
+
 import { siteConfig } from '@/site.config'
 
-import '@/styles/styles.css'
 import '@fontsource/geist-mono'
 
 import Footer from '@/layouts/Footer.astro'
@@ -34,7 +35,7 @@ import Footer from '@/layouts/Footer.astro'
     <meta name="twitter:url" content={Astro.url} />
   </head>
   <body
-    class="antialiased container mx-auto sm:max-w-3xl py-10 flex flex-col justify-between min-h-svh px-4"
+    class="container mx-auto flex min-h-svh flex-col justify-between px-4 py-10 antialiased sm:max-w-3xl"
   >
     <slot />
     <Footer />

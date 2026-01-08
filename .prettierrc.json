@@ -4,6 +4,14 @@
     "@ianvs/prettier-plugin-sort-imports",
     "prettier-plugin-tailwindcss"
   ],
+  "overrides": [
+    {
+      "files": ["**/*.astro"],
+      "options": {
+        "parser": "astro"
+      }
+    }
+  ],
   "semi": false,
   "singleQuote": true,
   "tailwindStylesheet": "./src/styles/styles.css",
@@ -19,6 +27,5 @@
     "^[../]",
     "^[./]"
   ],
-  "importOrderParserPlugins": ["typescript", "jsx", "decorators-legacy"],
-  "importOrderTypeScriptVersion": "5.8.2"
+  "importOrderParserPlugins": ["typescript", "jsx", "decorators-legacy"]
 }
